@@ -1,10 +1,13 @@
-Baby Camera Project Application Part
+Quickstart For Node.js and Angular2
 ========================
-Status: Still under development
+Status: Development complete
 
-Requirment
----------------
-video Server part installed and configured.
+This is known to me base of the Angular2 Application. 
+
+It has Router and basic authentication module.
+
+This Repo is very usefull to myself, and could be usefull to someone else as well i guess.
+
 
 ```
 npm install
