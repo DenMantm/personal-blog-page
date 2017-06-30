@@ -1,10 +1,7 @@
-Baby Camera Project Application Part
+Quickstart For Node.js and Angular2
 ========================
-Status: Still under development
+Status: Development complete
 
-Requirment
----------------
-video Server part installed and configured.
 
 ```
 npm install
