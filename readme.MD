@@ -1,20 +1,10 @@
-Quickstart For Node.js and Angular2
+USed Quickstart For Node.js and Angular2 to create this
 ========================
-Status: Development complete
+Status: Under Development
 
-Basic Angular2 Application with Node.js Server. 
-
-It has Router and basic authentication module.
-
-This Repo is very usefull to myself, and could be usefull to someone else as well i guess.
-
+My Blog Page
 
 ```
-To setup and start:
-npm install
-npm start
+adding to package.json past install step to compile typescript
 
-Additionallyt to setup types for typescript if typescript to be used in npode:
-
-npm install @types/node --save-dev
 ```
