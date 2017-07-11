@@ -5,7 +5,8 @@
     "start": "node node-server/server.js",
     "server": "node node-server/server.js",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "postinstall": "tsc"
   },
   "keywords": [],
   "author": "Deniss Strods",
