@@ -13,10 +13,6 @@ import { JQUERY_TOKEN } from '../common/index';
 
 export class LandingPageComponent implements OnInit {
 
-dynamicBannerBackground:string;
-dynamicMarginTop:string;
-dynamicOpacity:number;
-loginWindow:boolean;
 loginForm:FormGroup;
 username:FormControl;
 password:FormControl;
@@ -25,9 +21,7 @@ el: ElementRef;
 validLogin:boolean;
 
 constructor(private auth:AuthService,
-@Inject(JQUERY_TOKEN) private $,
-el: ElementRef){
-    this.el = el;
+@Inject(JQUERY_TOKEN) private $){
 }
 
 //form
@@ -40,19 +34,7 @@ ngOnInit(){
         password:this.password
     })
 }
-  ngAfterViewInit() {
-    const hostElem = this.el.nativeElement;
-    //console.log(hostElem.children);
-    //console.log(hostElem.parentNode);
-  }
 
-@HostListener("window:scroll", ['$event'])
-onWindowScroll(event) {
-   let scrollPos = document.body.scrollTop;
-      this.dynamicBannerBackground = '50% ' + (-scrollPos/4)+"px";
-      this.dynamicMarginTop = (scrollPos/4)+"px";
-      this.dynamicOpacity =  1-(scrollPos/250);
-}
 login(value){
     this.auth.login(value.username,value.password).subscribe(resp => {
                     if(resp.json().status == 'failed'){

@@ -12,8 +12,8 @@ import {FirstPageGuard,LoggedInGuard } from './common/index';
 //canDeactivate:['canDeactivateCreateEvent'],
 
 export const appRoutes:Routes = [
-    {path:'landingPage',component:LandingPageComponent,canActivate:[FirstPageGuard]},
-    {path:'home',component:HomeComponent,canActivate:[LoggedInGuard]},
+    {path:'landingPage',component:LandingPageComponent},
+    //{path:'home',component:HomeComponent,canActivate:[LoggedInGuard]},
     { path: '404', component: Error404Component },
     {path:'', redirectTo:'/landingPage', pathMatch:'full'}
     ];
