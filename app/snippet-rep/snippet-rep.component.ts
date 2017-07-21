@@ -3,7 +3,7 @@ import { JQUERY_TOKEN } from '../common/index';
 
 
 @Component({
-    templateUrl:'app/snippet-repository/snippet-repository.component.html'
+    templateUrl:'app/snippet-repository/snippet-rep.component.html'
 })
 
 export class SnippetRepository{
