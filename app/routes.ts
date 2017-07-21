@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 import { Error404Component } from './errors/404.component';
 
 //one import combined in barel
-import { SnippetRepository } from './snippet-repository/snippet-repository.component';
+import { SnippetRepository } from './snippet-rep/snippet-rep.component';
 import { LandingPageComponent } from './landing-page/index';
 import { HomeComponent } from './home/index';
 

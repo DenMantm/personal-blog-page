@@ -12,7 +12,7 @@ import { Error404Component } from './errors/404.component';
 
 import { HomeComponent } from './home/index';
 import { LandingPageComponent } from './landing-page/index';
-import { SnippetRepository } from './snippet-repository/snippet-repository.component';
+import { SnippetRepository } from './snippet-rep/snippet-rep.component';
 
 
 
