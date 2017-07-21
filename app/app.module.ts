@@ -12,6 +12,7 @@ import { Error404Component } from './errors/404.component';
 
 import { HomeComponent } from './home/index';
 import { LandingPageComponent } from './landing-page/index';
+import { SnippetRepository } from './snippet-repository/snippet-repository.component';
 
 
 
@@ -41,6 +42,7 @@ declare let moment:Object;
                     Error404Component,
                     HomeComponent,
                     LandingPageComponent,
+                    SnippetRepository,
                     MyAppComponent
                     ],
     providers: [AuthService,FirstPageGuard,LoggedInGuard,{provide:JQUERY_TOKEN,useValue:jQuery}
