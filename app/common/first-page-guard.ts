@@ -9,7 +9,7 @@ export class FirstPageGuard implements CanActivate {
 
   canActivate() {
       if(!this.auth.isAuthenticated()){
-        return !!this.auth.isAuthenticatedOnServer().then(res=>{
+        return !!this.auth.isAuthenticatedOnServer().subscribe(res=>{
             if(res.id == undefined){
               return true;
             }else{

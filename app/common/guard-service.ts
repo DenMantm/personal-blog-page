@@ -12,7 +12,7 @@ export class LoggedInGuard implements CanActivate {
     console.log("Running Guard Service");
 
       if(!this.auth.isAuthenticated()){
-        return !!this.auth.isAuthenticatedOnServer().then(res=>{
+        return !!this.auth.isAuthenticatedOnServer().subscribe(res=>{
             if(res.id == undefined){
               this.router.navigate(['landingPage']);
               return false;

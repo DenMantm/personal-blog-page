@@ -20,4 +20,15 @@
     </div>
     </div>
   </div>
+
+    <div *ngFor="let snippet of SNIPPETS"  class="row">
+      <div class="col">
+        <h2  class="editable" [(contenteditableModel)]="snippet.titleText" ></h2>
+        <h4  class="editable" [(contenteditableModel)]="snippet.topNoteText"></h4>
+        <p   class="editable" [(contenteditableModel)]="snippet.codeText" ></p>
+        <h4  class="editable" [(contenteditableModel)]="snippet.bottomNoteText"></h4>
+      </div>
+    </div>
+    <button (click)="checkObject()" type="button" class="btn btn-primary">Primary</button>
+
 </div>

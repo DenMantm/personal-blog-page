@@ -45,7 +45,7 @@ export class AuthService{
             else{
                 return {}
             }
-        }).toPromise();
+        });
     }
 
     login(username,password){
