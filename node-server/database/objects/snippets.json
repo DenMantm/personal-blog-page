@@ -1,0 +1,26 @@
+[
+    {
+        "id": 0,
+        "group": "Angular2",
+        "titleText": "My best snippet",
+        "topNoteText": "Explaining how to do something here",
+        "codeText": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\nimport { MY EDIT HERE } from '../common/index';\n\n\n\n\n\n@Component({\n    templateUrl:\"./app/home/home.component.html\",\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}\n",
+        "bottomNoteText": "Bottom text of the snippet"
+    },
+    {
+        "id": 1,
+        "group": "Angular2",
+        "titleText": "Snippet 2",
+        "topNoteText": "Top Text of the snippet",
+        "codeText": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\n\n@Component({\n    templateUrl:\"./app/home/home.component.html\",\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}\n\n",
+        "bottomNoteText": "Bottom text of the snippet"
+    },
+    {
+        "id": 2,
+        "group": "Angular2",
+        "titleText": "Snippet 3",
+        "topNoteText": "Top Text of the snippet",
+        "codeText": "Snippet code here",
+        "bottomNoteText": "Bottom text of the snippet"
+    }
+]

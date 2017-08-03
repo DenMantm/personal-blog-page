@@ -12,7 +12,7 @@ import { Error404Component } from './errors/404.component';
 
 import { HomeComponent } from './home/index';
 import { LandingPageComponent } from './landing-page/index';
-import { SnippetRepository, SnippetInstance,ContenteditableModel } from './snippet-rep/index';
+import { SnippetRepository, SnippetInstance,ContenteditableModel,SnippetRepResolverService } from './snippet-rep/index';
 
 
 
@@ -21,7 +21,8 @@ import { AuthService } from './user/auth.service';
 
 import { JQUERY_TOKEN,
  FirstPageGuard,
- LoggedInGuard
+ LoggedInGuard,
+ SaveObjectService
          } from './common/index';
 
 import { appRoutes } from './routes'
@@ -47,7 +48,8 @@ declare let moment:Object;
                     MyAppComponent,
                     ContenteditableModel //directive
                     ],
-    providers: [AuthService,FirstPageGuard,LoggedInGuard,{provide:JQUERY_TOKEN,useValue:jQuery}
+    providers: [AuthService,FirstPageGuard,LoggedInGuard,SaveObjectService,SnippetRepResolverService,
+        {provide:JQUERY_TOKEN,useValue:jQuery}
 
 
     ],

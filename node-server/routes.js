@@ -2,6 +2,7 @@ var auth = require('./auth'),
   path = require('path');
 
 var fs = require('fs');
+var db = require('./database/database-simulator');
 
 
 
@@ -22,17 +23,19 @@ module.exports = function(app) {
   });
 
 
-
-
+  //API
+  //USER LOGIN
   app.post('/api/login', auth.authenticate);
   app.get('/api/currentIdentity', auth.getCurrentIdentity);
-
 
   app.get('/api/logout', function(req, res) {
     req.logout();
     res.end();
   });
 
+  //GETING DATA FROM THE db
+  app.get('/api/snippets', db.readSnippets);
+  app.post('/api/snippets',db.writeSnippets);
 
   app.get('/app/*', function(req, res) {
     res.sendStatus(404);

@@ -1,16 +1,27 @@
 import {Component, Inject}  from '@angular/core';
-import { JQUERY_TOKEN } from '../common/index';
+import { ActivatedRoute } from '@angular/router';
+import { JQUERY_TOKEN,SaveObjectService } from '../common/index';
 import { SnippetInstanceObj } from './common/snippet-rep.snippet-object';
 import { ContenteditableModel } from './common/snippet-rep.snippet-directive';
-
+declare var PR;
 
 @Component({
     templateUrl:'app/snippet-rep/snippet-rep.component.html'
 })
 
 export class SnippetRepository{
-    constructor(@Inject(JQUERY_TOKEN) private $){
+    SNIPPETS:SnippetInstanceObj[];
+    constructor(@Inject(JQUERY_TOKEN) private $,private saveSnippet:SaveObjectService,private route:ActivatedRoute){
 }
+    //refreshing the code pretify
+      ngAfterViewChecked(){
+      PR.prettyPrint();
+  }
+       ngOnInit() {
+       this.SNIPPETS = this.route.snapshot.data['SNIPPETS'];
+       console.log(this.SNIPPETS);
+   }
+
 enable(){
         this.$('.editable').hallo({
           plugins: {
@@ -52,30 +63,62 @@ disable(){
 }
 checkObject(){
     console.log(this.SNIPPETS);
+    this.saveSnippet.saveSnippets(this.SNIPPETS);
+    PR.prettyPrint();
 }
 
-SNIPPETS:SnippetInstanceObj[] = [{
-    id:0,
-    group:'Angular2',
-    titleText:'Snippet 1',
-    topNoteText:'Top Text of the snippet',
-    codeText:'Snippet code here',
-    bottomNoteText:'Bottom text of the snippet'
-},
-{
-    id:1,
-    group:'Angular2',
-    titleText:'Snippet 2',
-    topNoteText:'Top Text of the snippet',
-    codeText:'Snippet code here',
-    bottomNoteText:'Bottom text of the snippet'
-},
-{
-    id:2,
-    group:'Angular2',
-    titleText:'Snippet 3',
-    topNoteText:'Top Text of the snippet',
-    codeText:'Snippet code here',
-    bottomNoteText:'Bottom text of the snippet'
-}]
+// SNIPPETS:SnippetInstanceObj[] = [{
+//     id:0,
+//     group:'Angular2',
+//     titleText:'Snippet 1',
+//     topNoteText:'Top Text of the snippet',
+//     codeText:`import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';
+// import { AuthService } from '../user/auth.service';
+// import { ActivatedRoute } from '@angular/router';
+// import { JQUERY_TOKEN } from '../common/index';
+
+
+// @Component({
+//     templateUrl:'./app/home/home.component.html',
+// 		styles:[\`h1 {color:red;}\`]
+// })
+
+
+// export class HomeComponent implements OnInit {
+// 		ngOnInit(): void {
+// 			this.user = this.route.snapshot.data['user'];
+// 		}
+// 	user:any;
+// 	constructor(
+// 	private route:ActivatedRoute,	
+// 	private auth:AuthService,
+// 	@Inject(JQUERY_TOKEN) private $){
+// 	}
+//   ngAfterViewInit() {
+    
+//   }
+// 	ngOnChanges(){
+// 		this.user = this.auth.getCurrentUser();
+// 	}
+
+
+// }`,
+//     bottomNoteText:'Bottom text of the snippet'
+// },
+// {
+//     id:1,
+//     group:'Angular2',
+//     titleText:'Snippet 2',
+//     topNoteText:'Top Text of the snippet',
+//     codeText:'Snippet code here',
+//     bottomNoteText:'Bottom text of the snippet'
+// },
+// {
+//     id:2,
+//     group:'Angular2',
+//     titleText:'Snippet 3',
+//     topNoteText:'Top Text of the snippet',
+//     codeText:'Snippet code here',
+//     bottomNoteText:'Bottom text of the snippet'
+// }]
 }
