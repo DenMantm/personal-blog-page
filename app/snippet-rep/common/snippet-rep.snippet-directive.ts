@@ -32,12 +32,12 @@ export class ContenteditableModel {
 
   /** This should probably be debounced. */
   onKeyup() {
-    var value = this.elRef.nativeElement.innerText;
+    var value = this.elRef.nativeElement.innerHTML;
     this.lastViewModel = value;
     this.update.emit(value);
   }
 
   private refreshView() {
-    this.elRef.nativeElement.innerText = this.model
+    this.elRef.nativeElement.innerHTML = this.model
   }
 }

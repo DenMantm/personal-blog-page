@@ -3,32 +3,27 @@
     <div class="col">
         <button (click)="enable()">Enable</button>
         <button (click)="disable()">Disable</button>
-    <h1 class="editable">Hello World</h1>
-    <div class="editable">
-      <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-      </p>
-      <p>
-        Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
-      </p>
-      <table>
-          <tr>
-              <td width="70%">x</td>
-              <td width="30%">x</td>
-          </tr>
-      </table>
-    </div>
+    <h1 class="editable">{{currentSgroup.groupName}}</h1>
     </div>
   </div>
-
-    <div *ngFor="let snippet of SNIPPETS"  class="row">
-      <div class="col">
+  
+  <div class="row">
+    <div class="col-2">
+      <snippet-rep-sidebar (selectClick)="select($event)" [SNIPPETS]="SNIPPETS"></snippet-rep-sidebar>
+    </div>
+    <div class="col">
+      <div *ngFor="let snippet of currentSgroup.snippets">
         <h2  class="editable" [(contenteditableModel)]="snippet.titleText" ></h2>
         <h4  class="editable" [(contenteditableModel)]="snippet.topNoteText"></h4>
         <pre class="prettyprint editable" [(contenteditableModel)]="snippet.codeText"></pre>
         <h4  class="editable" [(contenteditableModel)]="snippet.bottomNoteText"></h4>
       </div>
-    </div>
+    
     <button (click)="checkObject()" type="button" class="btn btn-primary">Primary</button>
+      
+    </div>
+  </div>
+
+
 
 </div>

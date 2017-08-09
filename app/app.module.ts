@@ -12,7 +12,7 @@ import { Error404Component } from './errors/404.component';
 
 import { HomeComponent } from './home/index';
 import { LandingPageComponent } from './landing-page/index';
-import { SnippetRepository, SnippetInstance,ContenteditableModel,SnippetRepResolverService } from './snippet-rep/index';
+import { SnippetRepository, SnippetInstance,ContenteditableModel,SnippetRepResolverService,SnippetRepSidebar } from './snippet-rep/index';
 
 
 
@@ -46,7 +46,8 @@ declare let moment:Object;
                     SnippetRepository,
                     SnippetInstance,
                     MyAppComponent,
-                    ContenteditableModel //directive
+                    ContenteditableModel, //directive
+                    SnippetRepSidebar
                     ],
     providers: [AuthService,FirstPageGuard,LoggedInGuard,SaveObjectService,SnippetRepResolverService,
         {provide:JQUERY_TOKEN,useValue:jQuery}

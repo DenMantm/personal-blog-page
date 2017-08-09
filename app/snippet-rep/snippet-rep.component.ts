@@ -1,7 +1,7 @@
 import {Component, Inject}  from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JQUERY_TOKEN,SaveObjectService } from '../common/index';
-import { SnippetInstanceObj } from './common/snippet-rep.snippet-object';
+import { SnippetInstanceObj,SnippetInstanceObjGroup } from './common/snippet-rep.snippet-object';
 import { ContenteditableModel } from './common/snippet-rep.snippet-directive';
 declare var PR;
 
@@ -10,7 +10,8 @@ declare var PR;
 })
 
 export class SnippetRepository{
-    SNIPPETS:SnippetInstanceObj[];
+    SNIPPETS:SnippetInstanceObjGroup[];
+    currentSgroup:SnippetInstanceObjGroup;
     constructor(@Inject(JQUERY_TOKEN) private $,private saveSnippet:SaveObjectService,private route:ActivatedRoute){
 }
     //refreshing the code pretify
@@ -19,7 +20,10 @@ export class SnippetRepository{
   }
        ngOnInit() {
        this.SNIPPETS = this.route.snapshot.data['SNIPPETS'];
-       console.log(this.SNIPPETS);
+       this.currentSgroup = this.SNIPPETS[0];
+   }
+   select(value){
+       this.currentSgroup = this.SNIPPETS.filter(e => e.groupName == value)[0];
    }
 
 enable(){
