@@ -5,11 +5,17 @@ import { JQUERY_TOKEN } from '../../common/index';
 @Component({
     selector: 'snippet-rep-sidebar',
     templateUrl: 'app/snippet-rep/snippet-rep-sidebar/snippet-rep-sidebar.component.html',
-    styles: [`.sub{
-        border: 1px solid black;
+    styles: [`.sub-menu-e{
+        padding:0px;
+        margin-left: 10px;
+    }
+    .main-menu-e{
+        padding:0px;
     }
     .hand { cursor: pointer; cursor: hand; }
-    .selected {color:red}`]
+    .selected {color:red !important}
+    .main-block{padding-right:5%;
+    padding-left:5%}`]
 })
 
 export class SnippetRepSidebar {

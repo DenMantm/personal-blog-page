@@ -3,7 +3,7 @@
     <div class="col">
         <button (click)="enable()">Enable</button>
         <button (click)="disable()">Disable</button>
-    <h1 class="editable">{{currentSgroup.groupName}}</h1>
+    <h1 class="title">{{currentSgroup.groupName}}</h1>
     </div>
   </div>
   
@@ -13,17 +13,14 @@
     </div>
     <div class="col">
       <div *ngFor="let snippet of currentSgroup.snippets">
-        <h2  class="editable" [(contenteditableModel)]="snippet.titleText" ></h2>
-        <h4  class="editable" [(contenteditableModel)]="snippet.topNoteText"></h4>
+        <h3  class="editable" [(contenteditableModel)]="snippet.titleText" ></h3>
+        <p  class="editable" [(contenteditableModel)]="snippet.topNoteText"></p>
         <pre class="prettyprint editable" [(contenteditableModel)]="snippet.codeText"></pre>
-        <h4  class="editable" [(contenteditableModel)]="snippet.bottomNoteText"></h4>
+        <p  class="editable" [(contenteditableModel)]="snippet.bottomNoteText"></p>
       </div>
     
     <button (click)="checkObject()" type="button" class="btn btn-primary">Primary</button>
       
     </div>
   </div>
-
-
-
 </div>

@@ -1,6 +1,13 @@
 <nav class="nav flex-column">
   <div *ngFor="let group of SNIPPETS">
-      <a class="nav-link hand" [ngClass]="{'active': group.groupName == currentlySelected,'selected':group.groupName == currentlySelected }" (click)="select($event.target.innerText)">{{group.groupName}}</a>
-      <a *ngFor="let snippet of group.snippets" [hidden]="group.groupName !== currentlySelected" class="nav-link sub" href="#">Link</a>
+      <a class="nav-link hand main-menu-e" [ngClass]="{'active': group.groupName == currentlySelected,'selected':group.groupName == currentlySelected }" (click)="select($event.target.innerText)">{{group.groupName}}</a>
+      <a *ngFor="let snippet of group.snippets" [hidden]="group.groupName !== currentlySelected" class="nav-link sub-menu-e" href="#">{{snippet.titleText}}</a>
   </div>
 </nav>
+
+<!--<div class="list-group">-->
+<!--  <a class="list-group-item" href="#"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>-->
+<!--  <a class="list-group-item" href="#"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; Library</a>-->
+<!--  <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Applications</a>-->
+<!--  <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Settings</a>-->
+<!--</div>-->

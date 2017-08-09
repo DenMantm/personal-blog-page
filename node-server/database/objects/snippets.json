@@ -6,8 +6,8 @@
             {
                 "sequence": 0,
                 "titleText": "Angular snippet",
-                "topNoteText": "<ul><li>Explaining how to do something here\nSomething Here\nLINK\nx&nbsp;</li><li>xs&nbsp;<br></li><li>sd&nbsp;<br></li><li>s<br></li></ul>",
-                "codeText": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\nimport { MY EDIT HERE } from '../common/index';\n\n\n\n\n\n@Component({\n    templateUrl:\"./app/home/home.component.html\",\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}\n",
+                "topNoteText": "<ul><li>Explaining how to do <b>something here\nSomething</b> Here\nLINK\nx&nbsp;</li><li>xs&nbsp;<br></li><li>sd&nbsp;<br></li></ul><p><ul><li>sd dsf sd ffds fds</li></ul></p>",
+                "codeText": "<span class=\"kwd\">import</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"typ\">Component</span><span class=\"pun\">,</span><span class=\"pln\"> </span><span class=\"typ\">ViewChild</span><span class=\"pun\">,</span><span class=\"pln\"> </span><span class=\"typ\">ElementRef</span><span class=\"pun\">,</span><span class=\"pln\"> </span><span class=\"typ\">AfterViewInit</span><span class=\"pun\">,</span><span class=\"typ\">OnInit</span><span class=\"pun\">,</span><span class=\"pln\"> </span><span class=\"typ\">Inject</span><span class=\"pun\">}</span><span class=\"pln\"> </span><span class=\"kwd\">from</span><span class=\"pln\"> </span><span class=\"str\">'@angular/core'</span><span class=\"pun\">;</span><span class=\"pln\">\n</span><span class=\"kwd\">import</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"pln\"> </span><span class=\"typ\">AuthService</span><span class=\"pln\"> </span><span class=\"pun\">}</span><span class=\"pln\"> </span><span class=\"kwd\">from</span><span class=\"pln\"> </span><span class=\"str\">'../user/auth.service'</span><span class=\"pun\">;</span><span class=\"pln\">\n</span><span class=\"kwd\">import</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"pln\"> </span><span class=\"typ\">ActivatedRoute</span><span class=\"pln\"> </span><span class=\"pun\">}</span><span class=\"pln\"> </span><span class=\"kwd\">from</span><span class=\"pln\"> </span><span class=\"str\">'@angular/router'</span><span class=\"pun\">;</span><span class=\"pln\">\n</span><span class=\"kwd\">import</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"pln\"> JQUERY_TOKEN </span><span class=\"pun\">}</span><span class=\"pln\"> </span><span class=\"kwd\">from</span><span class=\"pln\"> </span><span class=\"str\">'../common/index'</span><span class=\"pun\">;</span><span class=\"pln\">\n</span><span class=\"pln\">\n\n\n\n\n\n</span><span class=\"lit\">@Component</span><span class=\"pun\">({</span><span class=\"pln\">\n    templateUrl</span><span class=\"pun\">:</span><span class=\"str\">\"./app/home/home.component.html\"</span><span class=\"pun\">,</span><span class=\"pln\">\n\t\tstyles</span><span class=\"pun\">:[</span><span class=\"str\">`h1 {color:red;}`</span><span class=\"pun\">]</span><span class=\"pln\">\n</span><span class=\"pun\">})</span><span class=\"pln\">\n\n\n</span><span class=\"kwd\">export</span><span class=\"pln\"> </span><span class=\"kwd\">class</span><span class=\"pln\"> </span><span class=\"typ\">HomeComponent</span><span class=\"pln\"> </span><span class=\"kwd\">implements</span><span class=\"pln\"> </span><span class=\"typ\">OnInit</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"pln\">\n\t\tngOnInit</span><span class=\"pun\">():</span><span class=\"pln\"> </span><span class=\"kwd\">void</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"pln\">\n\t\t\t</span><span class=\"kwd\">this</span><span class=\"pun\">.</span><span class=\"pln\">user </span><span class=\"pun\">=</span><span class=\"pln\"> </span><span class=\"kwd\">this</span><span class=\"pun\">.</span><span class=\"pln\">route</span><span class=\"pun\">.</span><span class=\"pln\">snapshot</span><span class=\"pun\">.</span><span class=\"pln\">data</span><span class=\"pun\">[</span><span class=\"str\">'user'</span><span class=\"pun\">];</span><span class=\"pln\">\n\t\t</span><span class=\"pun\">}</span><span class=\"pln\">\n\tuser</span><span class=\"pun\">:</span><span class=\"pln\">any</span><span class=\"pun\">;</span><span class=\"pln\">\n\t</span><span class=\"kwd\">constructor</span><span class=\"pun\">(</span><span class=\"pln\">\n\t</span><span class=\"kwd\">private</span><span class=\"pln\"> route</span><span class=\"pun\">:</span><span class=\"typ\">ActivatedRoute</span><span class=\"pun\">,</span><span class=\"pln\">\t\n\t</span><span class=\"kwd\">private</span><span class=\"pln\"> auth</span><span class=\"pun\">:</span><span class=\"typ\">AuthService</span><span class=\"pun\">,</span><span class=\"pln\">\n\t</span><span class=\"lit\">@Inject</span><span class=\"pun\">(</span><span class=\"pln\">JQUERY_TOKEN</span><span class=\"pun\">)</span><span class=\"pln\"> </span><span class=\"kwd\">private</span><span class=\"pln\"> $</span><span class=\"pun\">){</span><span class=\"pln\">\n\t</span><span class=\"pun\">}</span><span class=\"pln\">\n  ngAfterViewInit</span><span class=\"pun\">()</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"pln\">\n    \n  </span><span class=\"pun\">}</span><span class=\"pln\">\n\tngOnChanges</span><span class=\"pun\">(){</span><span class=\"pln\">\n\t\t</span><span class=\"kwd\">this</span><span class=\"pun\">.</span><span class=\"pln\">user </span><span class=\"pun\">=</span><span class=\"pln\"> </span><span class=\"kwd\">this</span><span class=\"pun\">.</span><span class=\"pln\">auth</span><span class=\"pun\">.</span><span class=\"pln\">getCurrentUser</span><span class=\"pun\">();</span><span class=\"pln\">\n\t</span><span class=\"pun\">}</span><span class=\"pln\">\n\n\n</span><span class=\"pun\">}</span>",
                 "bottomNoteText": "Bottom text of the snippet",
                 "comments": [
                     {
@@ -43,6 +43,36 @@
     {
         "group": "plsql",
         "groupName": "PL/SQL",
+        "snippets": [
+            {
+                "sequence": 0,
+                "titleText": "My best snippet",
+                "topNoteText": "Explaining how to do something here",
+                "codeText": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\nimport { MY EDIT HERE } from '../common/index';\n\n\n\n\n\n@Component({\n    templateUrl:\"./app/home/home.component.html\",\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}\n",
+                "bottomNoteText": "Bottom text of the snippet",
+                "comments": null
+            },
+            {
+                "sequence": 1,
+                "titleText": "Snippet 2",
+                "topNoteText": "Top Text of the snippet",
+                "codeText": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\n\n@Component({\n    templateUrl:\"./app/home/home.component.html\",\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}\n\n",
+                "bottomNoteText": "Bottom text of the snippet",
+                "comments": null
+            },
+            {
+                "sequence": 2,
+                "titleText": "Snippet 3",
+                "topNoteText": "Top Text of the snippet",
+                "codeText": "Snippet code here",
+                "bottomNoteText": "Bottom text of the snippet",
+                "comments": null
+            }
+        ]
+    },
+    {
+        "group": "java",
+        "groupName": "JAVA",
         "snippets": [
             {
                 "sequence": 0,
