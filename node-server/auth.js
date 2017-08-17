@@ -8,7 +8,6 @@ exports.authenticate = function(req, res, next) {
     if(err) {return next(err);}
     if(!user) { 
       res.json({status:'failed'}); 
-      
     }
     req.logIn(user, function(err) {
       if(err) {return next(err);}
@@ -17,6 +16,27 @@ exports.authenticate = function(req, res, next) {
   })
   auth(req, res, next);
 };
+//exports.signup = passport.authenticate('signup')
+
+exports.signup = function(req, res, next) {
+  //req.body.username = req.body.username.toLowerCase();
+  var auth = passport.authenticate('signup', function(err, user,info) {
+    console.log(info);
+    console.log(err);
+    console.log(user);
+    if(err) { res.json({status:'error'})}
+    
+    if(!user) {
+      res.json({status:'noUser'}); 
+    }
+     req.logIn(user, function(err) {
+       if(err) {return next(err);}
+       res.send({success:true, user: user});
+     })
+  })
+  auth(req, res, next);
+};
+
 
 exports.getCurrentIdentity = function(req, res, next) {
   console.log("Sending this value: ");

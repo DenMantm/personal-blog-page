@@ -47,59 +47,37 @@ export class AuthService{
             }
         });
     }
-
     login(username,password){
         //spin authentication here and if succesfull
         let headers = new Headers({'Content-Type':'application/json'});
         let options = new RequestOptions({headers:headers});
         let loginInfo = {username:username,password:password};
-
         this.loginSubject = this.http.post('/api/login',JSON.stringify(loginInfo),options);
-        
-        
-        
-        
-        
-        
-        console.log(loginInfo);
 
-        // return this.http.post('/api/login',JSON.stringify(loginInfo),options).do(
-        //     resp =>{ if(resp){
-        //         this.currentUser = resp.json().user;
-        //         this.router.navigate(['/home']);
-        //     }
-        // }).catch(error =>{
-        //         return Observable.of(false);
-        //     })
-        this.loginSubject.subscribe(resp => {
-            if(resp){
-                //console.log();
-                
-                if(resp.json().status == 'failed'){
-                    console.log('Failed to login');
-                    }
-                else{
+        return this.loginSubject.do(resp => {
+                 //assign value to the user
+                 if(resp.json().user)
                  this.currentUser = resp.json().user;
-                    this.router.navigate(['/home']);
-                }
-
-            }
-            else{
-                console.log('No Response');
-                
-            }
-            
         });
-            
-        return this.loginSubject;
-            
-        
-        // this.currentUser = {id:1, 
-        //             username:username,
-        //             firstName:'Deniss' }
+    }
+        signup(user,password,adminPassword){
+            console.log('signing up');
+        //spin authentication here and if succesfull
+        let headers = new Headers({'Content-Type':'application/json'});
+        let options = new RequestOptions({headers:headers});
+        let loginInfo = {
+                        user:user,
+                        password:password,
+                        adminPassword:adminPassword
+                        }
+                        
+        this.loginSubject = this.http.post('/api/signup',JSON.stringify(loginInfo),options);
 
-        
-        //return true
+        return this.loginSubject.do(resp => {
+                 //assign value to the user
+                 if(resp.json().user)
+                 this.currentUser = resp.json().user;
+        });
     }
         changeUserSettings(updatedUser){
         //spin authentication here and if succesfull
@@ -126,9 +104,7 @@ export class AuthService{
         
         //return true
     }
-
     logout(){
-
              this.http.get('/api/logout').do(
             resp =>{ if(resp){
                 console.log('working')

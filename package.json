@@ -26,7 +26,11 @@
     "@angular/platform-browser-dynamic": "~2.2.0",
     "@angular/router": "~3.2.0",
     "@angular/upgrade": "~2.2.0",
+    "@types/core-js": "0.9.36",
+    "@types/node": "~6.0.46",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
+    "concurrently": "2.2.0",
     "cookie-parser": "1.4.1",
     "core-js": "~2.4.1",
     "express": "4.13.4",
@@ -43,11 +47,8 @@
     "reflect-metadata": "~0.1.8",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.40",
-    "zone.js": "~0.6.26",
-    "concurrently": "2.2.0",
     "typescript": "~2.0.3",
-    "@types/core-js": "0.9.36",
-    "@types/node": "~6.0.46"
+    "zone.js": "~0.6.26"
   },
   "repository": {}
 }

@@ -6,7 +6,8 @@ import { ContenteditableModel } from './common/snippet-rep.snippet-directive';
 declare var PR;
 
 @Component({
-    templateUrl:'app/snippet-rep/snippet-rep.component.html'
+    templateUrl:'app/snippet-rep/snippet-rep.component.html',
+    styles:[`.switcher-background{background-color: #f6f8fa;}`]
 })
 
 export class SnippetRepository{

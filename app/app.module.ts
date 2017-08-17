@@ -13,6 +13,8 @@ import { Error404Component } from './errors/404.component';
 import { HomeComponent } from './home/index';
 import { LandingPageComponent } from './landing-page/index';
 import { SnippetRepository, SnippetInstance,ContenteditableModel,SnippetRepResolverService,SnippetRepSidebar } from './snippet-rep/index';
+import { FooterComponent } from './footer/footer.component';
+import { LoginSignupComponent } from './footer/loginSignup/login-signup.component';
 
 
 
@@ -47,7 +49,9 @@ declare let moment:Object;
                     SnippetInstance,
                     MyAppComponent,
                     ContenteditableModel, //directive
-                    SnippetRepSidebar
+                    SnippetRepSidebar,
+                    FooterComponent,
+                    LoginSignupComponent
                     ],
     providers: [AuthService,FirstPageGuard,LoggedInGuard,SaveObjectService,SnippetRepResolverService,
         {provide:JQUERY_TOKEN,useValue:jQuery}

@@ -67,16 +67,6 @@ ngOnInit(){
     })
 }
 
-login(value){
-    this.auth.login(value.username,value.password).subscribe(resp => {
-                    if(resp.json().status == 'failed'){
-                        this.validLogin = false;
-                    }
-
-    })
-
-}
-
 
 
 }

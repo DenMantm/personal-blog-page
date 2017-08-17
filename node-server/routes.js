@@ -27,7 +27,10 @@ module.exports = function(app) {
   //USER LOGIN
   app.post('/api/login', auth.authenticate);
   app.get('/api/currentIdentity', auth.getCurrentIdentity);
-
+  
+  //USER SIGNUP
+  app.post('/api/signup', auth.signup);
+  
   app.get('/api/logout', function(req, res) {
     req.logout();
     res.end();

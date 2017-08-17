@@ -6,8 +6,31 @@ import { JQUERY_TOKEN } from '../common/index';
     selector: 'navbar-component',
     templateUrl: 'app/nav/navbar.component.html',
     styles: [`.banner{
-        height:400px;
-        border: 1px solid black;
+            display: inline-block;
+            border: 7px solid #181818;
+            padding: 1rem 2rem;
+            font-size: 2.4rem;
+            font-family: Fjalla One,Noto Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.5;
+            font-weight: 400;
+}
+    .headder{
+            text-align: center;
+            background-color: #f8f8f8;
+            padding-top: 15vh;
+            padding-bottom: 15vh;
+    }
+    .col{
+            display: block;
+        width: 90%;
+        max-width: 980px;
+        margin: 0 auto;
+    }
+    .prep{
+        display: block;
+        font-size: 1.4rem;
     }`]
     //     styles: [`.nav.navbar-nav {font-size:15px;}
     // #searchForm {margin-right: 100px;}
