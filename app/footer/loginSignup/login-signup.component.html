@@ -27,15 +27,23 @@
 					<h2>Create New Account</h2><br>
 				  <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm.value)">
 				    <em class="error animated fadeIn" [hidden]="validInputField(sigUsername)">This field is required</em>
-					<input [ngClass]="{'inputError': !validInputField(sigUsername)}" type="text" formControlName="sigUsername" name="sigUsername" placeholder="Username">
+				    <em class="error animated fadeIn" [hidden]="!validSigUserField()">User with this name is already exists</em>
+					<input [ngClass]="{'inputError': !validInputField(sigUsername) || validSigUserField() }" type="text" formControlName="sigUsername" name="sigUsername" placeholder="Username">
+					
 					<em class="error animated fadeIn" [hidden]="validInputField(sigEmail)">This field is required</em>
-					<input [ngClass]="{'inputError': !validInputField(sigEmail)}" type="text" formControlName="sigEmail" name="sigEmail" placeholder="e-mail">
+					<em class="error animated fadeIn" [hidden]="!validSigEmailField()">E-mail format is not valid</em>
+					<input [ngClass]="{'inputError': !validInputField(sigEmail) || validSigEmailField()}" type="text" formControlName="sigEmail" name="sigEmail" placeholder="e-mail">
+					
 					<em class="error animated fadeIn" [hidden]="validInputField(sigPassword)">This field is required</em>
 					<input [ngClass]="{'inputError': !validInputField(sigPassword)}" type="password" formControlName="sigPassword" name="sigPassword" placeholder="Password">
+					
 					<em class="error animated fadeIn" [hidden]="validInputField(sigPasswordRep)">This field is required</em>
-					<input [ngClass]="{'inputError': !validInputField(sigPasswordRep)}" type="password" formControlName="sigPasswordRep" name="sigPasswordRep" placeholder="Repeat Password">
+					<em class="error animated fadeIn" [hidden]="!validSigPassRepField()">Passwords do not match</em>
+					<input [ngClass]="{'inputError': !validInputField(sigPasswordRep) || validSigPassRepField()}" type="password" formControlName="sigPasswordRep" name="sigPasswordRep" placeholder="Repeat Password">
+					
 					<em class="error animated fadeIn" [hidden]="validInputField(sigPasswordAdmin)">This field is required</em>
 					<input [ngClass]="{'inputError': !validInputField(sigPasswordAdmin)}" type="password" formControlName="sigPasswordAdmin" name="sigPasswordAdmin" placeholder="Administrator Password">
+					
 					<input [disabled]="signupForm.invalid"  type="submit" name="signup" class="login loginmodal-submit" value="Signup">
 				  </form>
 					

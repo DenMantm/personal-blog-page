@@ -24,15 +24,18 @@ exports.signup = function(req, res, next) {
     console.log(info);
     console.log(err);
     console.log(user);
-    if(err) { res.json({status:'error'})}
     
-    if(!user) {
-      res.json({status:'noUser'}); 
-    }
-     req.logIn(user, function(err) {
+      if(info.status == 'created'){
+        req.logIn(user, function(err) {
        if(err) {return next(err);}
-       res.send({success:true, user: user});
+       res.json(info);
      })
+      }
+      else{
+        res.json(info);
+      }
+
+     
   })
   auth(req, res, next);
 };

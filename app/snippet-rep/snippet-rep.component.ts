@@ -27,50 +27,50 @@ export class SnippetRepository{
        this.currentSgroup = this.SNIPPETS.filter(e => e.groupName == value)[0];
    }
 
-enable(){
-        this.$('.editable').hallo({
-          plugins: {
-            'halloindicator': {},
-            'halloformat': {},
-            'halloheadings': {},
-            'hallojustify': {},
-            'hallolists': {},
-            'hallolink': {},
-            'halloreundo': {},
-            // 'halloimage': {
-            //     search: function(query, limit, offset, successCallback) {
-            //         response = {offset: offset, total: limit + 1, assets: searchresult.slice(offset, offset+limit)};
-            //         successCallback(response);
-            //     },
-            //     suggestions: null,
-            //     uploadUrl: function() {
-            //       return '/some/example/url'
-            //     }
-            // }
-          },
-          editable: true,
-          toolbar: 'halloToolbarFixed'
-        })
-        .hallo('protectFocusFrom', this.$('#enable'));
+// enable(){
+//         this.$('.editable').hallo({
+//           plugins: {
+//             'halloindicator': {},
+//             'halloformat': {},
+//             'halloheadings': {},
+//             'hallojustify': {},
+//             'hallolists': {},
+//             'hallolink': {},
+//             'halloreundo': {},
+//             // 'halloimage': {
+//             //     search: function(query, limit, offset, successCallback) {
+//             //         response = {offset: offset, total: limit + 1, assets: searchresult.slice(offset, offset+limit)};
+//             //         successCallback(response);
+//             //     },
+//             //     suggestions: null,
+//             //     uploadUrl: function() {
+//             //       return '/some/example/url'
+//             //     }
+//             // }
+//           },
+//           editable: true,
+//           toolbar: 'halloToolbarFixed'
+//         })
+//         .hallo('protectFocusFrom', this.$('#enable'));
 
-        // this.$('.editable').bind('hallomodified', function(event, data) {
-        //     this.$('#modified').html("Editables modified");
-        // });
-        // this.$('.editable').bind('halloselected', function(event, data) {
-        //     this.$('#modified').html("Selection made");
-        // });
-        // this.$('.editable').bind('hallounselected', function(event, data) {
-        //     this.$('#modified').html("Selection removed");
-        // });
-}
-disable(){
-    this.$('.editable').hallo({editable: false});
-}
-checkObject(){
-    console.log(this.SNIPPETS);
-    this.saveSnippet.saveSnippets(this.SNIPPETS);
-    PR.prettyPrint();
-}
+//         // this.$('.editable').bind('hallomodified', function(event, data) {
+//         //     this.$('#modified').html("Editables modified");
+//         // });
+//         // this.$('.editable').bind('halloselected', function(event, data) {
+//         //     this.$('#modified').html("Selection made");
+//         // });
+//         // this.$('.editable').bind('hallounselected', function(event, data) {
+//         //     this.$('#modified').html("Selection removed");
+//         // });
+// }
+// disable(){
+//     this.$('.editable').hallo({editable: false});
+// }
+// checkObject(){
+//     console.log(this.SNIPPETS);
+//     this.saveSnippet.saveSnippets(this.SNIPPETS);
+//     PR.prettyPrint();
+// }
 
 // SNIPPETS:SnippetInstanceObj[] = [{
 //     id:0,

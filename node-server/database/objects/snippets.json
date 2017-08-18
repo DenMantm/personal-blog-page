@@ -5,7 +5,7 @@
         "snippets": [
             {
                 "sequence": 0,
-                "titleText": "Starting work",
+                "titleText": "Starting work x",
                 "topNoteText": "<div><p class=\"MsoNormal\" style=\"text-indent:36.0pt\"><span lang=\"EN-US\">Easy way to create\na new ng Project is to copy existing start repository as -&gt; ,&nbsp;</span><span style=\"text-indent: 36pt; font-size: 1rem;\">But this is without\nnode server..... So &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; functionality is limited to fronted(almost)&nbsp;</span><a href=\"https://github.com/angular/quickstart\" style=\"text-indent: 36pt; background-color: rgb(255, 255, 255); font-size: 1rem;\">https://github.com/angular/quickstart</a></p><p class=\"MsoNormal\" style=\"text-indent:36.0pt\"><span style=\"text-indent: 36pt; font-size: 1rem;\">Or If requirement is to develop with Node.js server use:&nbsp;</span><a href=\"https://github.com/DenMantm/angular2-node-quickstart\" style=\"text-indent: 36pt; background-color: rgb(255, 255, 255); font-size: 1rem;\">https://github.com/DenMantm/angular2-node-quickstart</a></p></div><p></p>",
                 "codeText": "",
                 "bottomNoteText": "",

@@ -12,7 +12,7 @@ import { Error404Component } from './errors/404.component';
 
 import { HomeComponent } from './home/index';
 import { LandingPageComponent } from './landing-page/index';
-import { SnippetRepository, SnippetInstance,ContenteditableModel,SnippetRepResolverService,SnippetRepSidebar } from './snippet-rep/index';
+import { SnippetRepository, SnippetInstance,ContenteditableModel,SnippetRepResolverService,SnippetRepSidebar,SnippetEditNav } from './snippet-rep/index';
 import { FooterComponent } from './footer/footer.component';
 import { LoginSignupComponent } from './footer/loginSignup/login-signup.component';
 
@@ -51,7 +51,8 @@ declare let moment:Object;
                     ContenteditableModel, //directive
                     SnippetRepSidebar,
                     FooterComponent,
-                    LoginSignupComponent
+                    LoginSignupComponent,
+                    SnippetEditNav
                     ],
     providers: [AuthService,FirstPageGuard,LoggedInGuard,SaveObjectService,SnippetRepResolverService,
         {provide:JQUERY_TOKEN,useValue:jQuery}

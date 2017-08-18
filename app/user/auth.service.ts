@@ -62,11 +62,13 @@ export class AuthService{
     }
         signup(user,password,adminPassword){
             console.log('signing up');
+            
         //spin authentication here and if succesfull
         let headers = new Headers({'Content-Type':'application/json'});
         let options = new RequestOptions({headers:headers});
         let loginInfo = {
                         user:user,
+                        username:user.username,
                         password:password,
                         adminPassword:adminPassword
                         }
@@ -75,8 +77,8 @@ export class AuthService{
 
         return this.loginSubject.do(resp => {
                  //assign value to the user
-                 if(resp.json().user)
-                 this.currentUser = resp.json().user;
+                 if(resp.json().status=='created')
+                 this.currentUser = user;
         });
     }
         changeUserSettings(updatedUser){
