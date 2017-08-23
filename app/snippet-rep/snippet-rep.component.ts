@@ -8,7 +8,8 @@ declare var PR;
 
 @Component({
     templateUrl:'app/snippet-rep/snippet-rep.component.html',
-    styles:[`.switcher-background{background-color: #f6f8fa;}`]
+    styles:[`.switcher-background{background-color: #f6f8fa;}
+            .border{border:1px solid black}`]
 })
 
 export class SnippetRepository{
@@ -16,7 +17,6 @@ export class SnippetRepository{
     SNIPPETS:SnippetInstanceObjGroup[];
     currentSgroup:SnippetInstanceObjGroup;
     menuIsSelected:boolean;
-    code:any
     
     @ViewChild('titleText') titleText; 
     constructor(@Inject(JQUERY_TOKEN) private $,
@@ -24,47 +24,14 @@ export class SnippetRepository{
                 private route:ActivatedRoute,
                 private renderer:Renderer,
                 private auth:AuthService){
-                    
-                         this.code = `import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';
-import { AuthService } from '../user/auth.service';
-import { ActivatedRoute } from '@angular/router';
-import { JQUERY_TOKEN } from '../common/index';
 
-
-@Component({
-    templateUrl:'./app/home/home.component.html',
-		styles:[\`h1 {color:red;}\`]
-})
-
-
-export class HomeComponent implements OnInit {
-		ngOnInit(): void {
-			this.user = this.route.snapshot.data['user'];
-		}
-	user:any;
-	constructor(
-	private route:ActivatedRoute,	
-	private auth:AuthService,
-	@Inject(JQUERY_TOKEN) private $){
-	}
-  ngAfterViewInit() {
-    
-  }
-	ngOnChanges(){
-		this.user = this.auth.getCurrentUser();
-	}
-
-
-}`;
-                    
-                    
          //this.isIn = false;
-}
+    }
     //refreshing the code pretify
       ngAfterViewChecked(){
       PR.prettyPrint();
       
-  } 
+     } 
   ngAfterViewInit(){
       this.renderer.invokeElementMethod(this.titleText.nativeElement, 'addEventListener', ['animationend', (e) => {
         this.menuIsSelected=false;

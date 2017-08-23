@@ -17,18 +17,43 @@
     <div class="col-12 col-md-9 pull-md-3 bd-content">
       <div class="animated fadeIn" *ngFor="let snippet of currentSgroup.snippets">
         <h3 class="editable" [(contenteditableModel)]="snippet.titleText" ></h3>
+        <!--[ngClass]="{'border': loginCheck()}"-->
         <div *ngFor="let element of snippet.elements">
-          <h1 *ngIf="element.type == 'h1'"  class="editable" [(contenteditableModel)]="element.text"></h1>
-          <p *ngIf="element.type == 'p'"  class="editable" [(contenteditableModel)]="element.text"></p>
-          <!--<pre *ngIf="element.type == 'pre'"  class="editable">-->
-          <!--  <code [(contenteditableModel)]="element.text"></code>-->
-          <!--</pre>-->
-          <pre *ngIf="element.type == 'pre'" class="prettyprint"><code [(contenteditableModel)]="element.text"></code></pre>
+            <div [hidden]="!loginCheck()" class="controls">
+                        <div class="btn-group dropup">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Element Action
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Move Up</a>
+                          <a class="dropdown-item" href="#">Move Down</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Delete</a>
+                        </div>
+                      </div>
+            </div>
+            <div class="element">
+              <h1 *ngIf="element.type == 'h1'"  class="editable" [(contenteditableModel)]="element.text"></h1>
+              <p *ngIf="element.type == 'p'"  class="editable" [(contenteditableModel)]="element.text"></p>
+              <pre *ngIf="element.type == 'pre'" class="prettyprint editable"><code [(contenteditableModel)]="element.text"></code></pre>
+            </div>
         </div>
         
         <div [hidden]="!loginCheck()" class="edit-snippet-controls">
-          <button class="btn btn-primary" (click)="snippetUp(snippet)">Move Up</button>
-          <button class="btn btn-primary" (click)="snippetDown(snippet)">Move Down</button>
+                        <div class="btn-group dropup">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Snippet Action
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Move Up</a>
+                          <a class="dropdown-item" href="#">Move Down</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Add H1</a>
+                          <a class="dropdown-item" href="#">Add P</a>
+                          <a class="dropdown-item" href="#">Add PRE</a>
+                        </div>
+                      </div>
+          
         </div>
         
         <hr>
