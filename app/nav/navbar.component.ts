@@ -18,7 +18,6 @@ import { JQUERY_TOKEN } from '../common/index';
 }
     .headder{
             text-align: center;
-            background-color: #f8f8f8;
             padding-top: 15vh;
             padding-bottom: 15vh;
     }

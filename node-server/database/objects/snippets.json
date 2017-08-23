@@ -5,10 +5,27 @@
         "snippets": [
             {
                 "sequence": 0,
-                "titleText": "Starting work x",
-                "topNoteText": "<div><p class=\"MsoNormal\" style=\"text-indent:36.0pt\"><span lang=\"EN-US\">Easy way to create\na new ng Project is to copy existing start repository as -&gt; ,&nbsp;</span><span style=\"text-indent: 36pt; font-size: 1rem;\">But this is without\nnode server..... So &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; functionality is limited to fronted(almost)&nbsp;</span><a href=\"https://github.com/angular/quickstart\" style=\"text-indent: 36pt; background-color: rgb(255, 255, 255); font-size: 1rem;\">https://github.com/angular/quickstart</a></p><p class=\"MsoNormal\" style=\"text-indent:36.0pt\"><span style=\"text-indent: 36pt; font-size: 1rem;\">Or If requirement is to develop with Node.js server use:&nbsp;</span><a href=\"https://github.com/DenMantm/angular2-node-quickstart\" style=\"text-indent: 36pt; background-color: rgb(255, 255, 255); font-size: 1rem;\">https://github.com/DenMantm/angular2-node-quickstart</a></p></div><p></p>",
-                "codeText": "",
-                "bottomNoteText": "",
+                "titleText": "Snippet 1",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "pre",
+                        "style": null,
+                        "text": "<div>passport.serializeUser(function(user, done) {\n  done(null, user); \n});\n\npassport.deserializeUser(function(user, done) {\n  done(null, user);\n});\n\n\npassport.use('loginUsers', new LocalStrategy(\n\n  function(username, password, done) {\n     users.findOne({email: username}, function(err, user) {\n\n      if (err) { return done(err); }\n\n      if (!user) {\n\n        console.log('[+] DB: user/password failure'.red);\n        return done(null, false, {error: ''});\n\n      }else if(!bcrypt.compareSync(password, user.hashed_password)){\n\n        console.log((\"[+] Password error\").red);\n        return done(null, false, {error: ''});\n\n      }else if(user.verified === false){\n\n            console.log(\"[+] DB: user not verified\");\n            return done(null, false, {error: ''});\n\n      }else{\n\n      console.log(\"[+] DB: user/password success\".green);\n      return done(null, user);\n      }  //else\n    }); //findOne\n  }\n));<br></div>"
+                    },
+                    {
+                        "id": 2,
+                        "type": "p",
+                        "style": null,
+                        "text": ""
+                    }
+                ],
                 "comments": [
                     {
                         "when": "today",
@@ -24,18 +41,52 @@
             },
             {
                 "sequence": 1,
-                "titleText": "Creating Component",
-                "topNoteText": "<b><i><span lang=\"EN-US\" style=\"font-size:11.0pt;\nline-height:107%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:\nCalibri;mso-bidi-font-family:Calibri;mso-ansi-language:EN-US;mso-fareast-language:\nEN-US;mso-bidi-language:AR-SA\">Each time you would create a component you would\nneed to register it in app.modules.ts</span></i></b>",
-                "codeText": "<ol class=\"linenums\"><li class=\"L0\"><div><br></div><div><span class=\"com\"><span class=\"kwd\">import</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"typ\">Component</span><span class=\"pun\">}</span><span class=\"pln\"> </span><span class=\"kwd\">from</span><span class=\"pln\"> </span><span class=\"str\">'@angular/core'</span><span class=\"pun\">;</span><span class=\"pln\">\n \n</span><span class=\"lit\">@Component</span><span class=\"pun\">({</span><span class=\"pln\">\n           selector</span><span class=\"pun\">:</span><span class=\"str\">'basic-app'</span><span class=\"pun\">,</span><span class=\"pln\">\n           </span><span class=\"kwd\">template</span><span class=\"pun\">:</span><span class=\"str\">`&lt;div&gt;</span></span></div></li><li class=\"L0\"><div><span class=\"com\"><span class=\"str\">                         &lt;h1&gt; Basic Element&lt;/h1&gt;</span></span></div></li><li class=\"L0\"><div><span class=\"com\"><span class=\"str\">                     &lt;/div&gt;`</span><span class=\"pun\">,</span><span class=\"pln\">\n           styles</span><span class=\"pun\">:</span><span class=\"pln\"> </span><span class=\"pun\">[</span><span class=\"str\">`h1 {color:red; font-size:20px; }`</span><span class=\"pln\"> </span><span class=\"pun\">]</span><span class=\"pln\">\n</span><span class=\"pun\">            })</span><span class=\"pln\">\n</span><span class=\"kwd\">export</span><span class=\"pln\"> </span><span class=\"kwd\">class</span><span class=\"pln\"> </span><span class=\"typ\">EventsAppComponent</span><span class=\"pln\"> </span><span class=\"pun\">{</span><span class=\"pln\">\n</span><span class=\"pun\">}</span></span></div></li></ol>",
-                "bottomNoteText": "Bottom text of the snippet",
+                "titleText": "Snippet 2",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "pre",
+                        "style": null,
+                        "text": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\n\n@Component({\n    templateUrl:'./app/home/home.component.html',\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}"
+                    },
+                    {
+                        "id": 2,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    }
+                ],
                 "comments": null
             },
             {
                 "sequence": 2,
                 "titleText": "Snippet 3",
-                "topNoteText": "Top Text of the snippet",
-                "codeText": "Snippet code here",
-                "bottomNoteText": "Bottom text of the snippet",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
+                    },
+                    {
+                        "id": 2,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    }
+                ],
                 "comments": null
             }
         ]
@@ -46,26 +97,77 @@
         "snippets": [
             {
                 "sequence": 0,
-                "titleText": "My best snippet",
-                "topNoteText": "Explaining how to do something here",
-                "codeText": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\nimport { MY EDIT HERE } from '../common/index';\n\n\n\n\n\n@Component({\n    templateUrl:\"./app/home/home.component.html\",\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}\n",
-                "bottomNoteText": "Bottom text of the snippet",
+                "titleText": "Snippet 1",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
+                    },
+                    {
+                        "id": 2,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    }
+                ],
                 "comments": null
             },
             {
                 "sequence": 1,
                 "titleText": "Snippet 2",
-                "topNoteText": "Top Text of the snippet",
-                "codeText": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\n\n@Component({\n    templateUrl:\"./app/home/home.component.html\",\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}\n\n",
-                "bottomNoteText": "Bottom text of the snippet",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
+                    },
+                    {
+                        "id": 2,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    }
+                ],
                 "comments": null
             },
             {
                 "sequence": 2,
                 "titleText": "Snippet 3",
-                "topNoteText": "Top Text of the snippet",
-                "codeText": "Snippet code here",
-                "bottomNoteText": "Bottom text of the snippet",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
+                    },
+                    {
+                        "id": 2,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    }
+                ],
                 "comments": null
             }
         ]
@@ -76,26 +178,77 @@
         "snippets": [
             {
                 "sequence": 0,
-                "titleText": "Starting",
-                "topNoteText": "<p class=\"MsoNormal\" style=\"text-indent:36.0pt\"><span lang=\"EN-US\">Easy way to create\na new ng Project is to copy existing start repository as -&gt; </span><span style=\"font-size: 1rem; text-indent: 36pt;\">But this is without\nnode server..... So functionality is limited to frontend(almost)&nbsp;</span></p><p class=\"MsoNormal\" style=\"text-indent:36.0pt\"><a href=\"https://github.com/angular/quickstart\" style=\"text-indent: 36pt; background-color: rgb(255, 255, 255); font-size: 1rem;\">https://github.com/angular/quickstart</a></p><p class=\"MsoNormal\" style=\"text-indent:36.0pt\"><span lang=\"EN-US\"><o:p></o:p></span></p>",
-                "codeText": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\nimport { MY EDIT HERE } from '../common/index';\n\n\n\n\n\n@Component({\n    templateUrl:\"./app/home/home.component.html\",\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}\n",
-                "bottomNoteText": "Bottom text of the snippet",
+                "titleText": "Snippet 1",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
+                    },
+                    {
+                        "id": 2,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    }
+                ],
                 "comments": null
             },
             {
                 "sequence": 1,
                 "titleText": "Snippet 2",
-                "topNoteText": "Top Text of the snippet",
-                "codeText": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\n\n@Component({\n    templateUrl:\"./app/home/home.component.html\",\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}\n\n",
-                "bottomNoteText": "Bottom text of the snippet",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
+                    },
+                    {
+                        "id": 2,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    }
+                ],
                 "comments": null
             },
             {
                 "sequence": 2,
                 "titleText": "Snippet 3",
-                "topNoteText": "Top Text of the snippet",
-                "codeText": "Snippet code here",
-                "bottomNoteText": "Bottom text of the snippet",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
+                    },
+                    {
+                        "id": 2,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    }
+                ],
                 "comments": null
             }
         ]

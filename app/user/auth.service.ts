@@ -9,14 +9,20 @@ import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class AuthService{
-    currentUser:IUser;
-    loginSubject:any;
+    private currentUser:IUser;
+    private loginSubject:any;
+    private userLoginResolverTriede:boolean;
     
     
     constructor(private router:Router,private http:Http){
 
     }
-
+    getUserLoginResolverTriede(){
+        return this.userLoginResolverTriede;
+    }
+    setUserLoginResolverTriede(){
+        this.userLoginResolverTriede = true;
+    }
     isAuthenticated(){
        // console.log(new Error().stack);
      //   console.log("DEBUG HERE: "+!!this.currentUser);

@@ -1,5 +1,6 @@
 body{
     font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color:#f4f5f9;
 }
 
 /*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
@@ -121,6 +122,7 @@ li.L9 {
     color: #4271ae;
   }
 }
+.hand { cursor: pointer; cursor: hand; }
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;

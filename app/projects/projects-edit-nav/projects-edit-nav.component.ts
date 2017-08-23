@@ -1,11 +1,10 @@
 import { Component, Inject, Input } from '@angular/core';
 import { JQUERY_TOKEN,SaveObjectService } from '../../common/index';
-import { SnippetInstanceObjGroup } from '../common/snippet-rep.snippet-object';
 
 declare var PR;
 @Component({
-    selector: 'snippet-edit-nav-component',
-    templateUrl: 'app/snippet-rep/snippet-edit-nav/snippet-edit-nav.component.html',
+    selector: 'projects-edit-nav-component',
+    templateUrl: 'app/projects/projects-edit-nav/projects-edit-nav.component.html',
     styles: [``]
     //     styles: [`.nav.navbar-nav {font-size:15px;}
     // #searchForm {margin-right: 100px;}
@@ -13,16 +12,13 @@ declare var PR;
     // li > a.active{color:red;}`]
 })
 
-export class SnippetEditNav {
+export class ProjectsEditNav {
     
-    @Input() SNIPPETS:SnippetInstanceObjGroup[]
+   // @Input() SNIPPETS:SnippetInstanceObjGroup[]
     constructor(@Inject(JQUERY_TOKEN) private $,private saveSnippet:SaveObjectService){
     }
     ngOnInit(){
         
-    }
-    ngAfterViewInit(){
-	   PR.prettyPrint();
     }
       
     enable(){
@@ -65,8 +61,8 @@ export class SnippetEditNav {
             this.$('.editable').hallo({editable: false});
         }
         checkObject(){
-            console.log(this.SNIPPETS);
-            this.saveSnippet.saveSnippets(this.SNIPPETS);
+            //console.log(this.SNIPPETS);
+            //this.saveSnippet.saveSnippets(this.SNIPPETS);
             PR.prettyPrint();
         }
 }

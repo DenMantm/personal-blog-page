@@ -12,22 +12,29 @@ import { JQUERY_TOKEN } from '../../common/index';
     .main-menu-e{
         padding:0px;
     }
-    .hand { cursor: pointer; cursor: hand; }
     .selected {color:red !important}
     .main-block{padding-right:5%;
-    padding-left:5%}`]
+    padding-left:5%}
+    
+    `]
 })
-
 export class SnippetRepSidebar {
     @Input() SNIPPETS:any;
     @Output() selectClick = new EventEmitter();
     currentlySelected:string;
     constructor(@Inject(JQUERY_TOKEN) private $){
+        //in the future will introduce local storage saving to allow tracking of where it was left
+        this.currentlySelected = 'Angular2';
     }
     ngOnInit(){
         }
+    
     select(selectValue){
-        this.currentlySelected = selectValue;
-        this.selectClick.emit(selectValue);
+        //if item is not already selected emmitting change
+         if(this.currentlySelected !== selectValue){
+            this.currentlySelected = selectValue;
+            this.selectClick.emit(selectValue);
+         }
+
     }
 }

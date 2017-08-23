@@ -7,11 +7,11 @@ exports.authenticate = function(req, res, next) {
   var auth = passport.authenticate('local', function(err, user) {
     if(err) {return next(err);}
     if(!user) { 
-      res.json({status:'failed'}); 
+      return res.json({status:'failed'}); 
     }
     req.logIn(user, function(err) {
       if(err) {return next(err);}
-      res.send({success:true, user: user});
+      return res.send({status:'success', user: user});
     })
   })
   auth(req, res, next);
@@ -21,18 +21,14 @@ exports.authenticate = function(req, res, next) {
 exports.signup = function(req, res, next) {
   //req.body.username = req.body.username.toLowerCase();
   var auth = passport.authenticate('signup', function(err, user,info) {
-    console.log(info);
-    console.log(err);
-    console.log(user);
-    
       if(info.status == 'created'){
         req.logIn(user, function(err) {
        if(err) {return next(err);}
-       res.json(info);
+       return res.json(info);
      })
       }
       else{
-        res.json(info);
+        return res.json(info);
       }
 
      

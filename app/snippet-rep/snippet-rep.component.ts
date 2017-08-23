@@ -1,8 +1,9 @@
-import {Component, Inject}  from '@angular/core';
+import {Component, Inject, ViewChild, Renderer}  from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JQUERY_TOKEN,SaveObjectService } from '../common/index';
 import { SnippetInstanceObj,SnippetInstanceObjGroup } from './common/snippet-rep.snippet-object';
 import { ContenteditableModel } from './common/snippet-rep.snippet-directive';
+import { AuthService } from '../user/index';
 declare var PR;
 
 @Component({
@@ -11,20 +12,79 @@ declare var PR;
 })
 
 export class SnippetRepository{
+    currentUser:any;
     SNIPPETS:SnippetInstanceObjGroup[];
     currentSgroup:SnippetInstanceObjGroup;
-    constructor(@Inject(JQUERY_TOKEN) private $,private saveSnippet:SaveObjectService,private route:ActivatedRoute){
+    menuIsSelected:boolean;
+    code:any
+    
+    @ViewChild('titleText') titleText; 
+    constructor(@Inject(JQUERY_TOKEN) private $,
+                private saveSnippet:SaveObjectService,
+                private route:ActivatedRoute,
+                private renderer:Renderer,
+                private auth:AuthService){
+                    
+                         this.code = `import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';
+import { AuthService } from '../user/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { JQUERY_TOKEN } from '../common/index';
+
+
+@Component({
+    templateUrl:'./app/home/home.component.html',
+		styles:[\`h1 {color:red;}\`]
+})
+
+
+export class HomeComponent implements OnInit {
+		ngOnInit(): void {
+			this.user = this.route.snapshot.data['user'];
+		}
+	user:any;
+	constructor(
+	private route:ActivatedRoute,	
+	private auth:AuthService,
+	@Inject(JQUERY_TOKEN) private $){
+	}
+  ngAfterViewInit() {
+    
+  }
+	ngOnChanges(){
+		this.user = this.auth.getCurrentUser();
+	}
+
+
+}`;
+                    
+                    
+         //this.isIn = false;
 }
     //refreshing the code pretify
       ngAfterViewChecked(){
       PR.prettyPrint();
+      
+  } 
+  ngAfterViewInit(){
+      this.renderer.invokeElementMethod(this.titleText.nativeElement, 'addEventListener', ['animationend', (e) => {
+        this.menuIsSelected=false;
+    }]);
+    // this.renderer.invokeElementMethod(this.titleText.nativeElement, 'addEventListener', ['transitionend', (e) => {
+    //     console.log(e);
+    // }]);
   }
-       ngOnInit() {
+    ngOnInit() {
        this.SNIPPETS = this.route.snapshot.data['SNIPPETS'];
+       this.currentUser = this.route.snapshot.data['User'];
        this.currentSgroup = this.SNIPPETS[0];
    }
    select(value){
+       this.menuIsSelected = true;
        this.currentSgroup = this.SNIPPETS.filter(e => e.groupName == value)[0];
+   }
+   loginCheck(){
+       console.log(this.auth.isAuthenticated());
+       return this.auth.isAuthenticated();
    }
 
 // enable(){

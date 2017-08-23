@@ -11,7 +11,7 @@ import { NavbarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
 
 import { HomeComponent } from './home/index';
-import { LandingPageComponent } from './landing-page/index';
+import { ProjectsPageComponent, ProjectsEditNav } from './projects/index';
 import { SnippetRepository, SnippetInstance,ContenteditableModel,SnippetRepResolverService,SnippetRepSidebar,SnippetEditNav } from './snippet-rep/index';
 import { FooterComponent } from './footer/footer.component';
 import { LoginSignupComponent } from './footer/loginSignup/login-signup.component';
@@ -19,7 +19,7 @@ import { LoginSignupComponent } from './footer/loginSignup/login-signup.componen
 
 
 //service
-import { AuthService } from './user/auth.service';
+import { AuthService, UserLoggedInResolver } from './user/index';
 
 import { JQUERY_TOKEN,
  FirstPageGuard,
@@ -44,7 +44,8 @@ declare let moment:Object;
                     NavbarComponent,
                     Error404Component,
                     HomeComponent,
-                    LandingPageComponent,
+                    ProjectsPageComponent,
+                    ProjectsEditNav,
                     SnippetRepository,
                     SnippetInstance,
                     MyAppComponent,
@@ -54,7 +55,7 @@ declare let moment:Object;
                     LoginSignupComponent,
                     SnippetEditNav
                     ],
-    providers: [AuthService,FirstPageGuard,LoggedInGuard,SaveObjectService,SnippetRepResolverService,
+    providers: [AuthService,FirstPageGuard,LoggedInGuard,SaveObjectService,SnippetRepResolverService,UserLoggedInResolver,
         {provide:JQUERY_TOKEN,useValue:jQuery}
 
 

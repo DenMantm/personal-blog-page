@@ -76,7 +76,6 @@ export class LoginSignupComponent {
                     }
                 else{
                     console.log('success');
-                    this.router.navigate(['/landingPage']);
                 }
             }
             else{

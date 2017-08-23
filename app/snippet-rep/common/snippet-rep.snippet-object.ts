@@ -1,10 +1,7 @@
 export class SnippetInstanceObj{
     sequence:number;
-    group:string;
     titleText:string;
-    topNoteText:string;
-    codeText:string;
-    bottomNoteText:string;
+    elements:any[];
     comments:any;
 }
 export class SnippetInstanceObjGroup {

@@ -22,12 +22,12 @@ module.exports = function() {
 
   passport.serializeUser(function(user, done) {
     if(user) {
-      done(null, user.id);
+      done(null, user._id);
     }
   });
 
   passport.deserializeUser(function(id, done) {
-        userModel.findOne({ 'id' :  id }, function(err, user) {
+        userModel.findOne({ '_id' :  id }, function(err, user) {
           done(err, user);
         });
   });

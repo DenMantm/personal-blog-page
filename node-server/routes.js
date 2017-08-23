@@ -9,7 +9,7 @@ var db = require('./database/database-simulator');
 module.exports = function(app) {
 
   //Custom paths
-    app.get('/landingPage', function(req, res) {
+    app.get('/projects', function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../index.html'));
   });
 

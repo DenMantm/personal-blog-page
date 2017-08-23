@@ -1,28 +1,26 @@
-import { Component, HostListener, OnInit, ElementRef, Renderer, Inject, } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer, Inject, } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../user/auth.service';
 import { IUser } from '../user/user.model';
 import { JQUERY_TOKEN } from '../common/index';
+import { ActivatedRoute } from '@angular/router';
 
-
+declare var PR;
 @Component({
-    templateUrl:'app/landing-page/landing-page.component.html',
-    styleUrls:['app/landing-page/landing-page.component.css']
+    templateUrl:'app/projects/projects-page.component.html',
+    styleUrls:['app/projects/projects-page.component.css']
 })
 
 
-export class LandingPageComponent implements OnInit {
-
-loginForm:FormGroup;
-username:FormControl;
-password:FormControl;
+export class ProjectsPageComponent implements OnInit {
+currentUser:any;
 user:IUser;
-el: ElementRef;
-validLogin:boolean;
 code:string;
 
 constructor(private auth:AuthService,
-@Inject(JQUERY_TOKEN) private $){
+			@Inject(JQUERY_TOKEN) private $,
+			private route:ActivatedRoute){
+				
      this.code = `import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';
 import { AuthService } from '../user/auth.service';
 import { ActivatedRoute } from '@angular/router';
@@ -58,15 +56,16 @@ export class HomeComponent implements OnInit {
 
 //form
 ngOnInit(){
-    this.validLogin = true;
-    this.username = new FormControl('',Validators.required)
-    this.password = new FormControl('',Validators.required)
-    this.loginForm = new FormGroup({
-        username:this.username,
-        password:this.password
-    })
+   this.currentUser = this.route.snapshot.data['User'];
+}
+ngAfterViewInit(){
+	   PR.prettyPrint();
 }
 
+   loginCheck(){
+       console.log(this.auth.isAuthenticated());
+       return this.auth.isAuthenticated();
+   }
 
 
 }

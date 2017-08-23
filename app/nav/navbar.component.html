@@ -3,26 +3,22 @@
     <div class='col'>
       <div >
         <div class="con">
-          <h1 class='banner'>Simple Code<span class="prep">{{ '{' }}from{{ '}' }}</span>Just some Developper</h1>
+          <h1 class='banner'>Simple Code<span class="prep">{{ '{' }}from{{ '}' }}</span>Just simple Developper</h1>
         </div>
-        
       </div>
-        
-
     </div>
   </div>
 </div>
 
-
 <nav>
   <ul class="nav justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">My Storry</a>
+    <li class="nav-item disabled">
+      <a class="nav-link active" href="#">CV</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Projects</a>
+    <li class="nav-item disabled">
+      <a class="nav-link" [routerLink]="['/projects']">Projects</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item disabled">
       <a class="nav-link" [routerLink]="['/snippet-repository']">Snippet Repository</a>
     </li>
     <li class="nav-item">
