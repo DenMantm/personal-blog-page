@@ -8,21 +8,24 @@
 <!--  </div>-->
 <!--</div>-->
 
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-bottom bg-inverse">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand" href="#">Edit Content</a>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link hand" (click)="enable()" >Enable <span class="sr-only">(current)</span></a>
+          <li [hidden]="editPressed"  class="nav-item active">
+            <a class="nav-link hand" (click)="edit()" >Enable Edit <span class="sr-only">(current)</span></a>
+          </li>
+          <li [hidden]="!editPressed"  class="nav-item hand">
+            <a class="nav-link" (click)="disable()" >Disable Edit <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item hand">
-            <a class="nav-link" (click)="disable()" >Disable</a>
+            <a class="nav-link" (click)="saveObject()" >Save <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item hand">
-            <a class="nav-link" (click)="checkObject()" >Save</a>
+            <a class="nav-link" (click)="logout()" >Logout <span class="sr-only">(current)</span></a>
           </li>
         </ul>
         <!--<form class="form-inline mt-2 mt-md-0">-->

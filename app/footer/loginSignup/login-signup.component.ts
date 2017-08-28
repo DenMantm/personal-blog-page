@@ -76,6 +76,7 @@ export class LoginSignupComponent {
                     }
                 else{
                     console.log('success');
+                    this.$('#login-modal').modal('toggle');
                 }
             }
             else{

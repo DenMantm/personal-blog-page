@@ -5,8 +5,8 @@
   </form>
   <br>
   <div class="animated fadeIn" *ngFor="let group of SNIPPETS">
-      <a class="nav-link hand main-menu-e" [ngClass]="{'active': group.groupName == currentlySelected,'selected':group.groupName == currentlySelected }" (click)="select($event.target.innerText)">{{group.groupName}}</a>
-      <a class="animated fadeIn" *ngFor="let snippet of group.snippets" [hidden]="group.groupName !== currentlySelected" class="nav-link sub-menu-e" href="#">{{snippet.titleText}}</a>
+      <a class="nav-link hand main-menu-e" [ngClass]="{'active': group.groupName == currentlySelected,'selected':group.groupName == currentlySelected }" (click)="select(group)">{{group.groupName}}</a>
+      <a class="animated fadeIn" *ngFor="let snippet of group.snippets" [hidden]="group.id !== currentlySelected" class="nav-link sub-menu-e hand" (click)="scrollTo(group.group + '-' + snippet.id)">{{snippet.titleText}}</a>
   </div>
 </nav>
 

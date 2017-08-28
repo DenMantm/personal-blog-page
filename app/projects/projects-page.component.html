@@ -1,5 +1,6 @@
  <!-- Main component for a primary marketing message or call to action -->
-<projects-edit-nav-component [hidden]='!loginCheck()'></projects-edit-nav-component>
+<content-edit-nav *ngIf="loginCheck()" (editClick)="editClick()" (disableClick)="disableClick()" (saveClick)="saveClick()"></content-edit-nav>
+
 <div class="container main-container">
   <div class="row">
     <div class="col-10">

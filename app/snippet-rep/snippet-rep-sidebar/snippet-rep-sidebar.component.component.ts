@@ -1,5 +1,6 @@
 import { Component, Inject, Input, Output, EventEmitter  } from '@angular/core';
-import { JQUERY_TOKEN } from '../../common/index';
+import { JQUERY_TOKEN, ScrollToElementService } from '../../common/index';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -20,21 +21,30 @@ import { JQUERY_TOKEN } from '../../common/index';
 })
 export class SnippetRepSidebar {
     @Input() SNIPPETS:any;
+    @Input() currentlySelected:any;
     @Output() selectClick = new EventEmitter();
-    currentlySelected:string;
-    constructor(@Inject(JQUERY_TOKEN) private $){
+    //currentlySelected:number;
+    constructor(@Inject(JQUERY_TOKEN) private $,
+                private scroll:ScrollToElementService,
+                private router:Router){
         //in the future will introduce local storage saving to allow tracking of where it was left
-        this.currentlySelected = 'Angular2';
     }
     ngOnInit(){
+        //console.log(this.curSel);
         }
     
-    select(selectValue){
+    select(selection){
+        
         //if item is not already selected emmitting change
-         if(this.currentlySelected !== selectValue){
-            this.currentlySelected = selectValue;
-            this.selectClick.emit(selectValue);
+         if(this.currentlySelected !== selection.id){
+            this.currentlySelected = selection.id;
+            //this.selectClick.emit(selectValue);
+            this.router.navigate(['/snippet-repository', selection.id ]);
          }
 
+    }
+    scrollTo(id){
+        console.log(id);
+        this.scroll.scrollTo(id);
     }
 }

@@ -17,6 +17,9 @@ module.exports = function(app) {
     app.get('/snippet-repository', function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../index.html'));
   });
+      app.get('/snippet-repository/*', function(req, res) {
+    res.sendFile(path.resolve(__dirname + '/../index.html'));
+  });
   
     app.get('/home', function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../index.html'));

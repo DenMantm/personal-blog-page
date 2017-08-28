@@ -11,10 +11,15 @@ import { NavbarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
 
 import { HomeComponent } from './home/index';
-import { ProjectsPageComponent, ProjectsEditNav } from './projects/index';
-import { SnippetRepository, SnippetInstance,ContenteditableModel,SnippetRepResolverService,SnippetRepSidebar,SnippetEditNav } from './snippet-rep/index';
+import { ProjectsPageComponent } from './projects/index';
+import {    SnippetRepository, 
+            SnippetInstance,
+            SnippetRepResolverService,
+            SnippetRepSidebar,
+        } from './snippet-rep/index';
 import { FooterComponent } from './footer/footer.component';
 import { LoginSignupComponent } from './footer/loginSignup/login-signup.component';
+import { ContentEditNav } from './content-edit-nav/content-edit-nav.component';
 
 
 
@@ -22,9 +27,14 @@ import { LoginSignupComponent } from './footer/loginSignup/login-signup.componen
 import { AuthService, UserLoggedInResolver } from './user/index';
 
 import { JQUERY_TOKEN,
- FirstPageGuard,
- LoggedInGuard,
- SaveObjectService
+         FirstPageGuard,
+         LoggedInGuard,
+         SaveObjectService,
+         ArrayUtilityService,
+         ContenteditableModelText,
+         ContenteditableModelHtml,
+         NativeWindowRef,
+         ScrollToElementService
          } from './common/index';
 
 import { appRoutes } from './routes'
@@ -45,20 +55,26 @@ declare let moment:Object;
                     Error404Component,
                     HomeComponent,
                     ProjectsPageComponent,
-                    ProjectsEditNav,
                     SnippetRepository,
                     SnippetInstance,
                     MyAppComponent,
-                    ContenteditableModel, //directive
+                    ContenteditableModelText, //directive
+                    ContenteditableModelHtml, //directive
                     SnippetRepSidebar,
                     FooterComponent,
                     LoginSignupComponent,
-                    SnippetEditNav
+                    ContentEditNav
                     ],
-    providers: [AuthService,FirstPageGuard,LoggedInGuard,SaveObjectService,SnippetRepResolverService,UserLoggedInResolver,
-        {provide:JQUERY_TOKEN,useValue:jQuery}
-
-
+    providers: [AuthService,
+                FirstPageGuard,
+                LoggedInGuard,
+                SaveObjectService,
+                SnippetRepResolverService,
+                UserLoggedInResolver,
+                ArrayUtilityService,
+                NativeWindowRef,
+                ScrollToElementService,
+                {provide:JQUERY_TOKEN,useValue:jQuery}
     ],
     bootstrap:[MyAppComponent]
 })

@@ -115,9 +115,9 @@ export class AuthService{
     logout(){
              this.http.get('/api/logout').do(
             resp =>{ if(resp){
-                console.log('working')
+                //console.log('working')
                 this.currentUser = null
-                this.router.navigate(['/landingPage']);
+               //this.router.navigate(['/landingPage']);
             }
         }).subscribe();
     }

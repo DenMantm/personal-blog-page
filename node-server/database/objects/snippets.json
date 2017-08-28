@@ -1,11 +1,30 @@
 [
-    {
+    {   "id":0,
         "group": "ang2",
         "groupName": "Angular2",
         "snippets": [
             {
-                "sequence": 0,
-                "titleText": "Snippet 1",
+                "id": 0,
+                "titleText": "Some Nice Snippet xxx dd ",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is <u>paragraph </u><b>entery </b>d d <i>dfsfd ss</i><h3><b>one<br></b><b>two&nbsp;</b></h3><div>three ads <i>dsa x</i></div>"
+                    },
+                    {
+                        "id": 1,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element xxx x"
+                    }
+                ],
+                "comments": null
+            },
+            {
+                "id": 1,
+                "titleText": "Snippet 2",
                 "elements": [
                     {
                         "id": 0,
@@ -17,13 +36,38 @@
                         "id": 1,
                         "type": "pre",
                         "style": null,
-                        "text": "<div>passport.serializeUser(function(user, done) {\n  done(null, user); \n});\n\npassport.deserializeUser(function(user, done) {\n  done(null, user);\n});\n\n\npassport.use('loginUsers', new LocalStrategy(\n\n  function(username, password, done) {\n     users.findOne({email: username}, function(err, user) {\n\n      if (err) { return done(err); }\n\n      if (!user) {\n\n        console.log('[+] DB: user/password failure'.red);\n        return done(null, false, {error: ''});\n\n      }else if(!bcrypt.compareSync(password, user.hashed_password)){\n\n        console.log((\"[+] Password error\").red);\n        return done(null, false, {error: ''});\n\n      }else if(user.verified === false){\n\n            console.log(\"[+] DB: user not verified\");\n            return done(null, false, {error: ''});\n\n      }else{\n\n      console.log(\"[+] DB: user/password success\".green);\n      return done(null, user);\n      }  //else\n    }); //findOne\n  }\n));<br></div>"
+                        "text": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index'; \n\n\n@Component({\n    templateUrl:'./app/home/home.component.html',\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}"
                     },
                     {
                         "id": 2,
                         "type": "p",
                         "style": null,
-                        "text": ""
+                        "text": "This is paragraph entery"
+                    }
+                ],
+                "comments": null
+            },
+            {
+                "id": 2,
+                "titleText": "Snippet 1",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "pre",
+                        "style": null,
+                        "text": "passport.serializeUser(function(user, done) {\n  done(null, user); \n});\n\npassport.deserializeUser(function(user, done) {\n  done(null, user);\n});\n\n\npassport.use('loginUsers', new LocalStrategy(\n\n  function(username, password, done) {\n     users.findOne({email: username}, function(err, user) {\n\n      if (err) { return done(err); }\n\n      if (!user) {\n\n        console.log('[+] DB: user/password failure'.red);\n        return done(null, false, {error: ''});\n\n      }else if(!bcrypt.compareSync(password, user.hashed_password)){\n\n        console.log((\"[+] Password error\").red);\n        return done(null, false, {error: ''});\n\n      }else if(user.verified === false){\n\n            console.log(\"[+] DB: user not verified\");\n            return done(null, false, {error: ''});\n\n      }else{\n\n      console.log(\"[+] DB: user/password success\".green);\n      return done(null, user);\n      }  //else\n    }); //findOne\n  }\n));"
+                    },
+                    {
+                        "id": 1,
+                        "type": "p",
+                        "style": null,
+                        "text": "xxxxxxx<div>dsdsds</div><div>dsdsds</div><div>dsdsds</div><div>dsds</div>"
+                    },
+                    {
+                        "id": 2,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
                     }
                 ],
                 "comments": [
@@ -40,8 +84,7 @@
                 ]
             },
             {
-                "sequence": 1,
-                "titleText": "Snippet 2",
+                "titleText": "New Snippet",
                 "elements": [
                     {
                         "id": 0,
@@ -51,22 +94,21 @@
                     },
                     {
                         "id": 1,
-                        "type": "pre",
-                        "style": null,
-                        "text": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index';\n\n\n@Component({\n    templateUrl:'./app/home/home.component.html',\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}"
-                    },
-                    {
-                        "id": 2,
                         "type": "p",
                         "style": null,
                         "text": "This is paragraph entery"
+                    },
+                    {
+                        "id": 2,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
                     }
                 ],
                 "comments": null
             },
             {
-                "sequence": 2,
-                "titleText": "Snippet 3",
+                "titleText": "New Snippet",
                 "elements": [
                     {
                         "id": 0,
@@ -76,27 +118,99 @@
                     },
                     {
                         "id": 1,
-                        "type": "pre",
-                        "style": null,
-                        "text": "This is pre block element"
-                    },
-                    {
-                        "id": 2,
                         "type": "p",
                         "style": null,
                         "text": "This is paragraph entery"
+                    },
+                    {
+                        "id": 2,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
+                    }
+                ],
+                "comments": null
+            },
+            {
+                "titleText": "My New Code Snippet",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    },
+                    {
+                        "id": 2,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
+                    }
+                ],
+                "comments": null
+            },
+            {
+                "titleText": "New Snippet",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the title element"
+                    },
+                    {
+                        "id": 1,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    },
+                    {
+                        "id": 2,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element xxx"
+                    }
+                ],
+                "comments": null
+            },
+            {
+                "titleText": "New Snippet",
+                "elements": [
+                    {
+                        "id": 0,
+                        "type": "h1",
+                        "style": null,
+                        "text": "This is the <b><i>title </i></b><u>element&nbsp;</u>"
+                    },
+                    {
+                        "id": 1,
+                        "type": "p",
+                        "style": null,
+                        "text": "This is paragraph entery"
+                    },
+                    {
+                        "id": 2,
+                        "type": "pre",
+                        "style": null,
+                        "text": "This is pre block element"
                     }
                 ],
                 "comments": null
             }
         ]
     },
-    {
+    {   "id":1,
         "group": "plsql",
         "groupName": "PL/SQL",
         "snippets": [
             {
-                "sequence": 0,
+                "id": 0,
                 "titleText": "Snippet 1",
                 "elements": [
                     {
@@ -121,7 +235,7 @@
                 "comments": null
             },
             {
-                "sequence": 1,
+                "id": 1,
                 "titleText": "Snippet 2",
                 "elements": [
                     {
@@ -146,7 +260,7 @@
                 "comments": null
             },
             {
-                "sequence": 2,
+                "id": 2,
                 "titleText": "Snippet 3",
                 "elements": [
                     {
@@ -172,12 +286,12 @@
             }
         ]
     },
-    {
+    {   "id":2,
         "group": "java",
         "groupName": "JAVA",
         "snippets": [
             {
-                "sequence": 0,
+                "id": 0,
                 "titleText": "Snippet 1",
                 "elements": [
                     {
@@ -202,7 +316,7 @@
                 "comments": null
             },
             {
-                "sequence": 1,
+                "id": 1,
                 "titleText": "Snippet 2",
                 "elements": [
                     {
@@ -227,7 +341,7 @@
                 "comments": null
             },
             {
-                "sequence": 2,
+                "id": 2,
                 "titleText": "Snippet 3",
                 "elements": [
                     {

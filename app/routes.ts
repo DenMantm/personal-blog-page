@@ -18,7 +18,12 @@ export const appRoutes:Routes = [
         component:SnippetRepository,
         resolve:{SNIPPETS:SnippetRepResolverService,
                  User:UserLoggedInResolver
-        }},
+    }},
+    {path:'snippet-repository/:sGroup',
+        component:SnippetRepository,
+        resolve:{SNIPPETS:SnippetRepResolverService,
+                 User:UserLoggedInResolver
+    }},
     //{path:'home',component:HomeComponent,canActivate:[LoggedInGuard]},
     { path: '404', component: Error404Component },
     {path:'', redirectTo:'/projects', pathMatch:'full'}

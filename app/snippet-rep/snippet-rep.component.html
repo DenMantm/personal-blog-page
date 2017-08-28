@@ -1,5 +1,6 @@
 <!--snippet edit navigation here-->
-<snippet-edit-nav-component [hidden]="!loginCheck()" [SNIPPETS]="SNIPPETS"></snippet-edit-nav-component>
+
+<content-edit-nav *ngIf="loginCheck()" (editClick)="editClick()" (disableClick)="disableClick()" (saveClick)="saveClick()"></content-edit-nav>
 
 <div class="container main-container">
   <div class="row">
@@ -12,34 +13,35 @@
   
   <div class="row">
     <div class="col-12 col-md-3 push-md-9 bd-sidebar">
-      <snippet-rep-sidebar (selectClick)="select($event)" [SNIPPETS]="SNIPPETS"></snippet-rep-sidebar>
+      <snippet-rep-sidebar (selectClick)="select($event)" [SNIPPETS]="SNIPPETS" [currentlySelected]="currentSgroup.id"></snippet-rep-sidebar>
     </div>
     <div class="col-12 col-md-9 pull-md-3 bd-content">
-      <div class="animated fadeIn" *ngFor="let snippet of currentSgroup.snippets">
-        <h3 class="editable" [(contenteditableModel)]="snippet.titleText" ></h3>
-        <!--[ngClass]="{'border': loginCheck()}"-->
-        <div *ngFor="let element of snippet.elements">
-            <div [hidden]="!loginCheck()" class="controls">
-                        <div class="btn-group dropup">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Element Action
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="#">Move Up</a>
-                          <a class="dropdown-item" href="#">Move Down</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Delete</a>
-                        </div>
-                      </div>
+      <div class="animated fadeIn" *ngFor="let snippet of currentSgroup.snippets" id="{{currentSgroup.group + '-' + snippet.id}}">
+        
+            <div [hidden]="!showElementTools" *ngIf="loginCheck()" class="controls">
+              <button (click)='remove(snippet,currentSgroup.snippets)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
+              <button (click)='moveUp(snippet,currentSgroup.snippets)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+              <button (click)='moveDown(snippet,currentSgroup.snippets)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
             </div>
-            <div class="element">
-              <h1 *ngIf="element.type == 'h1'"  class="editable" [(contenteditableModel)]="element.text"></h1>
-              <p *ngIf="element.type == 'p'"  class="editable" [(contenteditableModel)]="element.text"></p>
-              <pre *ngIf="element.type == 'pre'" class="prettyprint editable"><code [(contenteditableModel)]="element.text"></code></pre>
+        
+        <div class="element">
+        
+        <h3 class="editable" [(contenteditableModelText)]="snippet.titleText" ></h3>
+        <!--[ngClass]="{'border': loginCheck()}"-->
+        <div [ngClass]="{'border': loginCheck()&&showElementTools}" *ngFor="let element of snippet.elements">
+            <div [hidden]="!showElementTools" *ngIf="loginCheck()" class="controls">
+              <button (click)='remove(element,snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
+              <button (click)='moveUp(element,snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+              <button (click)='moveDown(element,snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+            </div>
+            <div  class="element animated fadeIn">
+              <h1  *ngIf="element.type == 'h1'"  class="editable" [(contenteditableModelHtml)]="element.text"></h1>
+              <div  *ngIf="element.type == 'p'"  class="editable" [(contenteditableModelHtml)]="element.text"></div>
+              <pre  *ngIf="element.type == 'pre'" class="prettyprint editable"  [(contenteditableModelText)]="element.text"></pre>
             </div>
         </div>
         
-        <div [hidden]="!loginCheck()" class="edit-snippet-controls">
+        <div [hidden]="!showElementTools"  *ngIf="loginCheck()" class="edit-snippet-controls">
                         <div class="btn-group dropup">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Snippet Action
@@ -57,8 +59,11 @@
         </div>
         
         <hr>
+      
+      </div>  <!--main element end-->
         
       </div>
+      <button [hidden]="!showElementTools" *ngIf="loginCheck()" (click)='addSnippet()' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add New Snippet</button>
     </div>
   </div>
 </div>
