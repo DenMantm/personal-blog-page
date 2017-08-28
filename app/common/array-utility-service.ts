@@ -8,12 +8,17 @@ export class ArrayUtilityService{
   constructor() {
 
   }
-  addNewElement(item,itemList){
+//   addNewElement(item,itemList){
     
-  }
+//   }
   addNewSnippet(itemList){
+            //adding item to the array and passing item length
             itemList.snippets.push(this.snippetFactory(itemList.length));
             
+  }
+  addNewElement(item){
+      //adding item to the array and passing item length
+      item.push(this.elementFactory(item.length));
   }
   
   sortObjArrayById(list){
@@ -70,23 +75,33 @@ export class ArrayUtilityService{
       return 0;
     }
     
+    elementFactory(id){
+        return  {
+                        "id": id,
+                        "type": "div",
+                        "style": null,
+                        "text": "<p>This fresh element</p>"
+                    };
+    }
+    
+    //Generate new template for snippet
     snippetFactory(id){
-                
+       
     return {
                 "id": id,
                 "titleText": "New Snippet",
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
-                        "text": "This is the title element"
+                        "text": "<h3>This is the title element</h3>"
                     },
                     {
                         "id": 1,
                         "type": "p",
                         "style": null,
-                        "text": "This is paragraph entery"
+                        "text": "<p>This is paragraph entery</p>"
                     },
                     {
                         "id": 2,

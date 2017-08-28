@@ -12,6 +12,14 @@ module.exports = function(app) {
     app.get('/projects', function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../index.html'));
   });
+  
+      app.get('/blog-posts', function(req, res) {
+    res.sendFile(path.resolve(__dirname + '/../index.html'));
+  });
+  
+        app.get('/blog-posts/*', function(req, res) {
+    res.sendFile(path.resolve(__dirname + '/../index.html'));
+  });
 
   //snippet-repository
     app.get('/snippet-repository', function(req, res) {

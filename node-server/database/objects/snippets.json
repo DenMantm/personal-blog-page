@@ -9,7 +9,7 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is <u>paragraph </u><b>entery </b>d d <i>dfsfd ss</i><h3><b>one<br></b><b>two&nbsp;</b></h3><div>three ads <i>dsa x</i></div>"
                     },
@@ -28,7 +28,7 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
@@ -40,7 +40,7 @@
                     },
                     {
                         "id": 2,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     }
@@ -59,13 +59,13 @@
                     },
                     {
                         "id": 1,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "xxxxxxx<div>dsdsds</div><div>dsdsds</div><div>dsdsds</div><div>dsds</div>"
                     },
                     {
                         "id": 2,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     }
@@ -88,13 +88,13 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
                     {
                         "id": 1,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     },
@@ -112,13 +112,13 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
                     {
                         "id": 1,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     },
@@ -136,13 +136,13 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
                     {
                         "id": 1,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     },
@@ -160,13 +160,13 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
                     {
                         "id": 1,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     },
@@ -184,13 +184,13 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the <b><i>title </i></b><u>element&nbsp;</u>"
                     },
                     {
                         "id": 1,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     },
@@ -215,7 +215,7 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
@@ -227,7 +227,7 @@
                     },
                     {
                         "id": 2,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     }
@@ -240,7 +240,7 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
@@ -252,7 +252,7 @@
                     },
                     {
                         "id": 2,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     }
@@ -265,7 +265,7 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
@@ -277,7 +277,7 @@
                     },
                     {
                         "id": 2,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     }
@@ -296,7 +296,7 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
@@ -308,7 +308,7 @@
                     },
                     {
                         "id": 2,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     }
@@ -321,7 +321,7 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
@@ -333,7 +333,7 @@
                     },
                     {
                         "id": 2,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     }
@@ -346,7 +346,7 @@
                 "elements": [
                     {
                         "id": 0,
-                        "type": "h1",
+                        "type": "div",
                         "style": null,
                         "text": "This is the title element"
                     },
@@ -358,7 +358,7 @@
                     },
                     {
                         "id": 2,
-                        "type": "p",
+                        "type": "div",
                         "style": null,
                         "text": "This is paragraph entery"
                     }

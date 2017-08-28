@@ -119,8 +119,13 @@ export class SnippetRepository{
     //   this.zone.run(() => {
     //         console.log('enabled time travel');
     //     });
+        //workaround - in order to enable editing on the newly created element
         setTimeout(function(){ this.editor = new MediumEditor('.editable'); }, 500);
+   }
+   addElement(list){
+        this.arrayUtil.addNewElement(list);
         
+        setTimeout(function(){ this.editor = new MediumEditor('.editable'); }, 500);
    }
    
    editClick(){

@@ -35,27 +35,13 @@
               <button (click)='moveDown(element,snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
             </div>
             <div  class="element animated fadeIn">
-              <h1  *ngIf="element.type == 'h1'"  class="editable" [(contenteditableModelHtml)]="element.text"></h1>
-              <div  *ngIf="element.type == 'p'"  class="editable" [(contenteditableModelHtml)]="element.text"></div>
+              <div  *ngIf="element.type == 'div'"  class="editable" [(contenteditableModelHtml)]="element.text"></div>
               <pre  *ngIf="element.type == 'pre'" class="prettyprint editable"  [(contenteditableModelText)]="element.text"></pre>
             </div>
         </div>
         
         <div [hidden]="!showElementTools"  *ngIf="loginCheck()" class="edit-snippet-controls">
-                        <div class="btn-group dropup">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Snippet Action
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="#">Move Up</a>
-                          <a class="dropdown-item" href="#">Move Down</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Add H1</a>
-                          <a class="dropdown-item" href="#">Add P</a>
-                          <a class="dropdown-item" href="#">Add PRE</a>
-                        </div>
-                      </div>
-          
+            <button [hidden]="!showElementTools" *ngIf="loginCheck()" (click)='addElement(snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add New Element</button>
         </div>
         
         <hr>
