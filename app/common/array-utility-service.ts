@@ -16,10 +16,17 @@ export class ArrayUtilityService{
             itemList.snippets.push(this.snippetFactory(itemList.length));
             
   }
-  addNewElement(item){
+  addNewElementDiv(item){
+      let param = "div";
       //adding item to the array and passing item length
-      item.push(this.elementFactory(item.length));
+      item.push(this.elementFactory(item.length,param));
   }
+  addNewElementPre(item){
+      let param = "pre";
+      //adding item to the array and passing item length
+      item.push(this.elementFactory(item.length,param));
+  }
+  
   
   sortObjArrayById(list){
       list.sort(this.sortById);
@@ -75,13 +82,21 @@ export class ArrayUtilityService{
       return 0;
     }
     
-    elementFactory(id){
+    elementFactory(id,param){
+        
+        let text;
+        param == "div"
+        ? text = "<p>This fresh element</p>"
+        : text = "code block"
+        
+        
         return  {
                         "id": id,
-                        "type": "div",
+                        "type": param,
                         "style": null,
-                        "text": "<p>This fresh element</p>"
+                        "text": text
                     };
+        
     }
     
     //Generate new template for snippet

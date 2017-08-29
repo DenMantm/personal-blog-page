@@ -1,5 +1,6 @@
 [
-    {   "id":0,
+    {
+        "id": 0,
         "group": "ang2",
         "groupName": "Angular2",
         "snippets": [
@@ -18,6 +19,18 @@
                         "type": "pre",
                         "style": null,
                         "text": "This is pre block element xxx x"
+                    },
+                    {
+                        "id": 2,
+                        "type": "div",
+                        "style": null,
+                        "text": "<p>This fresh element</p>"
+                    },
+                    {
+                        "id": 3,
+                        "type": "pre",
+                        "style": null,
+                        "text": "<p><span class=\"tag\">&lt;div</span><span class=\"pln\"> </span><span class=\"atn\"><b><u>class</u></b></span><span class=\"pun\">=</span><span class=\"atv\">\"btn-group dropup\"</span><span class=\"tag\">&gt;</span></p><h3><span class=\"tag\">Some comment here</span></h3><p><span class=\"tag\">&lt;button</span><span class=\"pln\"> </span><span class=\"atn\">class</span><span class=\"pun\">=</span><span class=\"atv\">\"btn btn-secondary btn-sm dropdown-toggle\"</span><span class=\"pln\"> </span><span class=\"atn\">type</span><span class=\"pun\">=</span><span class=\"atv\">\"button\"</span><span class=\"pln\"> </span><span class=\"atn\">data-toggle</span><span class=\"pun\">=</span><span class=\"atv\">\"dropdown\"</span><span class=\"pln\"> </span><span class=\"atn\">aria-haspopup</span><span class=\"pun\">=</span><span class=\"atv\">\"true\"</span><span class=\"pln\"> </span><span class=\"atn\">aria-expanded</span><span class=\"pun\">=</span><span class=\"atv\">\"false\"</span><span class=\"tag\">&gt;</span></p><p><span class=\"pln\">Add Element</span></p><p><span class=\"tag\">&lt;/button&gt;</span></p><p><span class=\"tag\">&lt;div</span><span class=\"pln\"> </span><span class=\"atn\">class</span><span class=\"pun\">=</span><span class=\"atv\">\"dropdown-menu\"</span><span class=\"tag\">&gt;</span></p><p><span class=\"tag\">&lt;button</span><span class=\"pln\"> (</span><span class=\"atn\">click</span><span class=\"pln\">)</span><span class=\"pun\">=</span><span class=\"atv\">'addElementPre(snippet.elements)'</span><span class=\"pln\"> </span><span class=\"atn\">type</span><span class=\"pun\">=</span><span class=\"atv\">\"button\"</span><span class=\"pln\"> </span><span class=\"atn\">class</span><span class=\"pun\">=</span><span class=\"atv\">\"dropdown-item\"</span><span class=\"tag\">&gt;&lt;i</span><span class=\"pln\"> </span><span class=\"atn\">class</span><span class=\"pun\">=</span><span class=\"atv\">\"fa fa-plus\"</span><span class=\"pln\"> </span><span class=\"atn\">aria-hidden</span><span class=\"pun\">=</span><span class=\"atv\">\"true\"</span><span class=\"tag\">&gt;&lt;/i&gt;</span><span class=\"pln\"> Code Elem</span><span class=\"tag\">&lt;/button&gt;</span></p><p><span class=\"tag\">&lt;button</span><span class=\"pln\"> (</span><span class=\"atn\">click</span><span class=\"pln\">)</span><span class=\"pun\">=</span><span class=\"atv\">'addElementDiv(snippet.elements)'</span><span class=\"pln\"> </span><span class=\"atn\">type</span><span class=\"pun\">=</span><span class=\"atv\">\"button\"</span><span class=\"pln\"> </span><span class=\"atn\">class</span><span class=\"pun\">=</span><span class=\"atv\">\"dropdown-item\"</span><span class=\"tag\">&gt;&lt;i</span><span class=\"pln\"> </span><span class=\"atn\">class</span><span class=\"pun\">=</span><span class=\"atv\">\"fa fa-plus\"</span><span class=\"pln\"> </span><span class=\"atn\">aria-hidden</span><span class=\"pun\">=</span><span class=\"atv\">\"true\"</span><span class=\"tag\">&gt;&lt;/i&gt;</span><span class=\"pln\"> Simple Elem</span><span class=\"tag\">&lt;/button&gt;</span></p><p><span class=\"tag\">&lt;/div&gt;</span></p><p><span class=\"tag\">&lt;/div&gt;</span></p>"
                     }
                 ],
                 "comments": null
@@ -36,7 +49,7 @@
                         "id": 1,
                         "type": "pre",
                         "style": null,
-                        "text": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index'; \n\n\n@Component({\n    templateUrl:'./app/home/home.component.html',\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}"
+                        "text": "import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';\nimport { AuthService } from '../user/auth.service';\nimport { ActivatedRoute } from '@angular/router';\nimport { JQUERY_TOKEN } from '../common/index'; \nimportimport\nimportimportimportimport@Component({\n    templateUrl:'./app/home/home.component.html',\n\t\tstyles:[`h1 {color:red;}`]\n})\n\n\nexport class HomeComponent implements OnInit {\n\t\tngOnInit(): void {\n\t\t\tthis.user = this.route.snapshot.data['user'];\n\t\t}\n\tuser:any;\n\tconstructor(\n\tprivate route:ActivatedRoute,\t\n\tprivate auth:AuthService,\n\t@Inject(JQUERY_TOKEN) private $){\n\t}\n  ngAfterViewInit() {\n    \n  }\n\tngOnChanges(){\n\t\tthis.user = this.auth.getCurrentUser();\n\t}\n\n\n}"
                     },
                     {
                         "id": 2,
@@ -205,7 +218,8 @@
             }
         ]
     },
-    {   "id":1,
+    {
+        "id": 1,
         "group": "plsql",
         "groupName": "PL/SQL",
         "snippets": [
@@ -286,7 +300,8 @@
             }
         ]
     },
-    {   "id":2,
+    {
+        "id": 2,
         "group": "java",
         "groupName": "JAVA",
         "snippets": [

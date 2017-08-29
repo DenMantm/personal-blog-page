@@ -36,12 +36,24 @@
             </div>
             <div  class="element animated fadeIn">
               <div  *ngIf="element.type == 'div'"  class="editable" [(contenteditableModelHtml)]="element.text"></div>
-              <pre  *ngIf="element.type == 'pre'" class="prettyprint editable"  [(contenteditableModelText)]="element.text"></pre>
+              <pre  *ngIf="element.type == 'pre'" class="prettyprint editable"  [(contenteditableModelHtml)]="element.text"></pre>
             </div>
         </div>
         
         <div [hidden]="!showElementTools"  *ngIf="loginCheck()" class="edit-snippet-controls">
-            <button [hidden]="!showElementTools" *ngIf="loginCheck()" (click)='addElement(snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add New Element</button>
+          
+          <div class="btn-group dropup">
+              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Add Element
+              </button>
+              <div class="dropdown-menu">
+                <button (click)='addElementPre(snippet.elements)' type="button" class="dropdown-item"><i class="fa fa-plus" aria-hidden="true"></i> Code Elem</button>
+                <button (click)='addElementDiv(snippet.elements)' type="button" class="dropdown-item"><i class="fa fa-plus" aria-hidden="true"></i> Simple Elem</button>
+              </div>
+            </div>
+          
+          
+            
         </div>
         
         <hr>

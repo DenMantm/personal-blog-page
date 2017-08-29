@@ -122,9 +122,12 @@ export class SnippetRepository{
         //workaround - in order to enable editing on the newly created element
         setTimeout(function(){ this.editor = new MediumEditor('.editable'); }, 500);
    }
-   addElement(list){
-        this.arrayUtil.addNewElement(list);
-        
+   addElementDiv(list){
+        this.arrayUtil.addNewElementDiv(list);
+        setTimeout(function(){ this.editor = new MediumEditor('.editable'); }, 500);
+   }
+   addElementPre(list){
+        this.arrayUtil.addNewElementPre(list);
         setTimeout(function(){ this.editor = new MediumEditor('.editable'); }, 500);
    }
    
