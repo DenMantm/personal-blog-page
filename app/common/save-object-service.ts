@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../user/auth.service';
-import { Http, Response, Headers, RequestOptions} from '@angular/http';
+import { Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 
 @Injectable()
 export class SaveObjectService{
@@ -44,12 +44,33 @@ export class SaveObjectService{
             }
         });
     }
-    //it does this automatically...
-    // convertString(string){
-    //     let tmp = string.replace(/"/g, '\\"');
-    //         tmp = tmp.replace(/'/g, "\\'");
-    //         tmp = tmp.replace(/`/g, '\\`');
-    //         return tmp;
-    // }
+    loadBlogPostList(){
+        return this.http.get('/api/getBlogPostList');//.map(resp => resp.json());
+    }
+    loadBlogPost(blogId){
+        
+         let params: URLSearchParams = new URLSearchParams();
+         params.set('blogId', blogId);
+        
+        
+        return this.http.get('/api/getBlogPost',{search: params});//.map(resp => resp.json());
+        
+    }
+    newBlogPost(newBlogPost){
+        //spin authentication here and if succesfull
+        let headers = new Headers({'Content-Type':'application/json'});
+        let options = new RequestOptions({headers:headers});
+
+        return this.http.post('/api/createNewBlogPost',JSON.stringify(newBlogPost),options);
+    }
+    editBlogPost(blogPost){
+        //spin authentication here and if succesfull
+        let headers = new Headers({'Content-Type':'application/json'});
+        let options = new RequestOptions({headers:headers});
+
+        return this.http.post('/api/editBlogPost',JSON.stringify(blogPost),options)
+
+    }
+
 
 }

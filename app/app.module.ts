@@ -1,7 +1,7 @@
 import './rxjs-extemtions';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule} from '@angular/router'
+import {RouterModule,ActivatedRouteSnapshot} from '@angular/router'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
@@ -12,7 +12,7 @@ import { NavbarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
 import { HomeComponent } from './home/index';
 import { ProjectsPageComponent } from './projects/index';
-import { BlogPostsComponent } from './blog-posts/index';
+import { BlogPostsComponent, BlogPostListResolverService, BlogPostInstanceComponent, BlogPostInstanceResolverService } from './blog-posts/index';
 import { FooterComponent } from './footer/footer.component';
 import { LoginSignupComponent } from './footer/loginSignup/login-signup.component';
 import { ContentEditNav } from './content-edit-nav/content-edit-nav.component';
@@ -36,7 +36,8 @@ import { JQUERY_TOKEN,
          ContenteditableModelText,
          ContenteditableModelHtml,
          NativeWindowRef,
-         ScrollToElementService
+         ScrollToElementService,
+         MediumEditorService
          } from './common/index';
 
 import { appRoutes } from './routes'
@@ -66,17 +67,21 @@ declare let moment:Object;
                     FooterComponent,
                     LoginSignupComponent,
                     ContentEditNav,
-                    BlogPostsComponent
+                    BlogPostsComponent,
+                    BlogPostInstanceComponent
                     ],
     providers: [AuthService,
                 FirstPageGuard,
                 LoggedInGuard,
                 SaveObjectService,
                 SnippetRepResolverService,
+                BlogPostListResolverService,
+                BlogPostInstanceResolverService,
                 UserLoggedInResolver,
                 ArrayUtilityService,
                 NativeWindowRef,
                 ScrollToElementService,
+                MediumEditorService,
                 {provide:JQUERY_TOKEN,useValue:jQuery}
     ],
     bootstrap:[MyAppComponent]

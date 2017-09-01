@@ -43,7 +43,7 @@ export class AuthService{
         return !!this.currentUser;
     }
     isAuthenticatedOnServer(){
-       return this.http.get('/api/currentIdentity').map( (response:any) =>{
+       return this.http.get('/api/currentIdentity').do( (response:any) =>{
             if(response._body){
                 this.currentUser = response.json();
                 return response.json();

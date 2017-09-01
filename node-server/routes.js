@@ -4,6 +4,8 @@ var auth = require('./auth'),
 var fs = require('fs');
 var db = require('./database/database-simulator');
 
+var dbIO = require('./service/database-io.service');
+
 
 
 module.exports = function(app) {
@@ -13,6 +15,11 @@ module.exports = function(app) {
     res.sendFile(path.resolve(__dirname + '/../index.html'));
   });
   
+  
+  
+  
+  //Blog Post Section
+  
       app.get('/blog-posts', function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../index.html'));
   });
@@ -20,6 +27,14 @@ module.exports = function(app) {
         app.get('/blog-posts/*', function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../index.html'));
   });
+  
+    app.post('/api/createNewBlogPost', dbIO.createNewBlogPost);
+    app.post('/api/editBlogPost', dbIO.editBlogPost);
+    app.get('/api/getBlogPostList', dbIO.getBlogPostList);
+    app.get('/api/getBlogPost', dbIO.getBlogPost);
+  
+  
+  //Snippet section
 
   //snippet-repository
     app.get('/snippet-repository', function(req, res) {

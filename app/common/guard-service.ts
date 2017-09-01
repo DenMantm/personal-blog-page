@@ -9,20 +9,21 @@ export class LoggedInGuard implements CanActivate {
   }
 
   canActivate() {
-    console.log("Running Guard Service");
+    // console.log("Running Guard Service");
 
-      if(!this.auth.isAuthenticated()){
-        return !!this.auth.isAuthenticatedOnServer().subscribe(res=>{
-            if(res.id == undefined){
-              this.router.navigate(['landingPage']);
-              return false;
-            }else{
-              return true;
-            }
-        });
-      }
-      else return true;
+    //   if(!this.auth.isAuthenticated()){
+    //     return !!this.auth.isAuthenticatedOnServer().subscribe(res=>{
+    //         if(res.id == undefined){
+    //           this.router.navigate(['landingPage']);
+    //           return false;
+    //         }else{
+    //           return true;
+    //         }
+    //     });
+    //   }
+    //   else return true;
 
-    //return this.auth.isAuthenticated();
+    // //return this.auth.isAuthenticated();
+    return true;
   }
 }

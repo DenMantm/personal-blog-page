@@ -1,0 +1,54 @@
+ <!-- Main component for a primary marketing message or call to action -->
+<content-edit-nav *ngIf="loginCheck()" (editClick)="editClick()" (disableClick)="disableClick()" (saveClick)="saveClick()"></content-edit-nav>
+
+<div class="container main-container">
+  <!--<div class="row">-->
+  <!--  <div class="col-10">-->
+  <!--    (wider) cxz cxz cxz cxz cxz cxz cxzzcx cxz cxz cxz cxz cxz cxz cxz cxz cxz cxz cxz cxz dsa dsadsa  dsa dsa dsa dsa dsa dsa dsa dsa dsa-->
+  <!--  </div>-->
+  <!--  <div class="col">-->
+  <!--    1 of 3 cxz cxz cx cxz cxz cxz cxzcxz cxz cxzzcx cxz cxz cxz cxz cxz-->
+  <!--  </div>-->
+  <!--</div>-->
+  <div class="row">
+    <div class="col">
+      <h1 [ngClass]="{'border': loginCheck()&&showElementTools}" *ngIf="blogPost" class="title editable animated fadeIn" [(contenteditableModelHtml)]="blogPost.title"></h1>
+      <div *ngIf="blogPost"  class = "blog-meta animated fadeIn">
+        "Author: {{blogPost?.author}} " , " Date: {{blogPost?.date | date: 'dd/MM/yyyy HH:MM'}}} "
+      </div>
+     <!--<button (click)="testPost()" type="button" class="btn btn-warning">AddPost</button>-->
+    </div>
+  </div>
+  
+    <div class="row">
+    <div class="col">
+        <div class="animated fadeIn" [ngClass]="{'border': loginCheck()&&showElementTools}" *ngFor="let element of blogPost?.blogElements">
+            <div [hidden]="!showElementTools" *ngIf="loginCheck()" class="controls">
+              <button (click)='remove(element,blogPost.blogElements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
+              <button (click)='moveUp(element,blogPost.blogElements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+              <button (click)='moveDown(element,blogPost.blogElements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+            </div>
+            <div  class="element animated fadeIn">
+              <div  *ngIf="element.type == 'div'"  class="editable" [(contenteditableModelHtml)]="element.text"></div>
+              <pre  *ngIf="element.type == 'pre'" class="prettyprint editable"  [(contenteditableModelHtml)]="element.text"></pre>
+            </div>
+        </div>
+        <div [hidden]="!showElementTools"  *ngIf="loginCheck()" class="edit-snippet-controls">
+          <button (click)='addElementDiv(blogPost.blogElements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Element</button>
+          <!--<div class="btn-group dropup">-->
+          <!--    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+          <!--      Add Element-->
+          <!--    </button>-->
+          <!--    <div class="dropdown-menu">-->
+          <!--      <button (click)='addElementPre(blogPost.blogElements)' type="button" class="dropdown-item"><i class="fa fa-plus" aria-hidden="true"></i> Code Elem</button>-->
+          <!--      <button (click)='addElementDiv(blogPost.blogElements)' type="button" class="dropdown-item"><i class="fa fa-plus" aria-hidden="true"></i> Simple Elem</button>-->
+          <!--    </div>-->
+          <!--</div>-->
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+
+

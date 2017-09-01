@@ -3,16 +3,11 @@
 
 <div class="container main-container">
   <div class="row">
-    <div class="col-10">
-      (wider) cxz cxz cxz cxz cxz cxz cxzzcx cxz cxz cxz cxz cxz cxz cxz cxz cxz cxz cxz cxz dsa dsadsa  dsa dsa dsa dsa dsa dsa dsa dsa dsa
-    </div>
     <div class="col">
-      1 of 3 cxz cxz cx cxz cxz cxz cxzcxz cxz cxzzcx cxz cxz cxz cxz cxz
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-     <pre class="prettyprint"><code class="javascript"></code></pre>
+      <ul>
+      <li *ngFor="let post of blogPostList"><a [routerLink]="['/blog-posts',post._id]" >{{post.title}}</a></li>
+      </ul>
+     <button (click)="testPost()" type="button" class="btn btn-warning">Add Post new Post</button>
     </div>
   </div>
 </div>

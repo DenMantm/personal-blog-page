@@ -7,4 +7,5 @@ export * from './content-editable-text.directive';
 export * from './content-editable-html.directive';
 export * from './native-window.service';
 export * from './scroll-to-element.service';
+export * from './medium-editor.service';
 

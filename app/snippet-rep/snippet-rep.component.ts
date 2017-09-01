@@ -1,17 +1,23 @@
 import {Component, Inject, ViewChild, Renderer, NgZone}  from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JQUERY_TOKEN,SaveObjectService,ArrayUtilityService,ContenteditableModelText,ContenteditableModelHtml } from '../common/index';
+import {JQUERY_TOKEN,
+        SaveObjectService,
+        ArrayUtilityService,
+        ContenteditableModelText,
+        ContenteditableModelHtml, 
+        MediumEditorService 
+        } from '../common/index';
 import { SnippetInstanceObj,SnippetInstanceObjGroup } from './common/snippet-rep.snippet-object';
 import { AuthService } from '../user/index';
 declare var PR;
-declare var Aloha;
-declare var MediumEditor;
+
+
 
 @Component({
     templateUrl:'app/snippet-rep/snippet-rep.component.html',
     styles:[`.switcher-background{background-color: #f6f8fa;}
             .border{border:1px solid gray;margin-bottom:5px}
-            .controls button {float:right;margin:bottom:10px}
+            .controls button {float:right;margin-bottom:10px}
             .controls {height: 0px;
     position: absolute;
     z-index: 100;
@@ -38,7 +44,8 @@ export class SnippetRepository{
                 private renderer:Renderer,
                 private auth:AuthService,
                 private zone:NgZone,
-                private arrayUtil:ArrayUtilityService){
+                private arrayUtil:ArrayUtilityService,
+                private medium:MediumEditorService){
 
          //this.isIn = false;
     }
@@ -48,9 +55,8 @@ export class SnippetRepository{
       
      } 
   ngAfterViewInit(){
-      this.renderer.invokeElementMethod(this.titleText.nativeElement, 'addEventListener', ['animationend', (e) => {
-        this.menuIsSelected=false;
-    }]);
+
+    
     // this.renderer.invokeElementMethod(this.titleText.nativeElement, 'addEventListener', ['transitionend', (e) => {
     //     console.log(e);
     // }]);
@@ -99,6 +105,9 @@ export class SnippetRepository{
    select(value){
        this.menuIsSelected = true;
        this.currentSgroup = this.SNIPPETS.filter(e => e.groupName == value)[0];
+        this.renderer.invokeElementMethod(this.titleText.nativeElement, 'addEventListener', ['animationend', (e) => {
+        this.menuIsSelected=false; }]);
+       
    }
    loginCheck(){
        return this.auth.isAuthenticated();
@@ -120,71 +129,26 @@ export class SnippetRepository{
     //         console.log('enabled time travel');
     //     });
         //workaround - in order to enable editing on the newly created element
-        setTimeout(function(){ this.editor = new MediumEditor('.editable'); }, 500);
+        setTimeout(()=>{ this.editor = this.medium.createInstance() }, 500);
    }
    addElementDiv(list){
         this.arrayUtil.addNewElementDiv(list);
-        setTimeout(function(){ this.editor = new MediumEditor('.editable'); }, 500);
+        setTimeout(()=>{ this.editor = this.medium.createInstance() }, 500);
    }
    addElementPre(list){
         this.arrayUtil.addNewElementPre(list);
-        setTimeout(function(){ this.editor = new MediumEditor('.editable'); }, 500);
+        setTimeout(()=>{ this.editor = this.medium.createInstance() }, 500);
    }
    
    editClick(){
        //Extra variable here
        this.showElementTools = true;
-        this.editor = new MediumEditor('.editable');
-        
-        // this.$('.summernote').summernote();    
-            
-            // 	this.$('.editable').aloha();
-            // Aloha.jQuery('.editable').aloha();
-
-            
-            
-        // this.$('.editable').hallo({
-        //   plugins: {
-        //     'halloindicator': {},
-        //     'halloformat': {},
-        //     'halloheadings': {},
-        //     'hallojustify': {},
-        //     'hallolists': {},
-        //     'hallolink': {},
-        //     'halloreundo': {},
-        //     // 'halloimage': {
-        //     //     search: function(query, limit, offset, successCallback) {
-        //     //         response = {offset: offset, total: limit + 1, assets: searchresult.slice(offset, offset+limit)};
-        //     //         successCallback(response);
-        //     //     },
-        //     //     suggestions: null,
-        //     //     uploadUrl: function() {
-        //     //       return '/some/example/url'
-        //     //     }
-        //     // }
-        //   },
-        //   editable: true,
-        //   toolbar: 'halloToolbarFixed'
-        // })
-        // .hallo('protectFocusFrom', this.$('#enable'));
-        
-        
-
-        // this.$('.editable').bind('hallomodified', function(event, data) {
-        //     this.$('#modified').html("Editables modified");
-        // });
-        // this.$('.editable').bind('halloselected', function(event, data) {
-        //     this.$('#modified').html("Selection made");
-        // });
-        // this.$('.editable').bind('hallounselected', function(event, data) {
-        //     this.$('#modified').html("Selection removed");
-        // });
+        this.editor = this.medium.createInstance()
         }
         disableClick(){
             this.showElementTools = false;
+            this.editor.destroy();
             
-            // this.$('.editable').hallo({editable: false});
-           // this.$('.editable').mahalo();
         }
         saveClick(){
                    this.zone.run(() => {
@@ -199,104 +163,4 @@ export class SnippetRepository{
         }
    
    
-
-// enable(){
-//         this.$('.editable').hallo({
-//           plugins: {
-//             'halloindicator': {},
-//             'halloformat': {},
-//             'halloheadings': {},
-//             'hallojustify': {},
-//             'hallolists': {},
-//             'hallolink': {},
-//             'halloreundo': {},
-//             // 'halloimage': {
-//             //     search: function(query, limit, offset, successCallback) {
-//             //         response = {offset: offset, total: limit + 1, assets: searchresult.slice(offset, offset+limit)};
-//             //         successCallback(response);
-//             //     },
-//             //     suggestions: null,
-//             //     uploadUrl: function() {
-//             //       return '/some/example/url'
-//             //     }
-//             // }
-//           },
-//           editable: true,
-//           toolbar: 'halloToolbarFixed'
-//         })
-//         .hallo('protectFocusFrom', this.$('#enable'));
-
-//         // this.$('.editable').bind('hallomodified', function(event, data) {
-//         //     this.$('#modified').html("Editables modified");
-//         // });
-//         // this.$('.editable').bind('halloselected', function(event, data) {
-//         //     this.$('#modified').html("Selection made");
-//         // });
-//         // this.$('.editable').bind('hallounselected', function(event, data) {
-//         //     this.$('#modified').html("Selection removed");
-//         // });
-// }
-// disable(){
-//     this.$('.editable').hallo({editable: false});
-// }
-// checkObject(){
-//     console.log(this.SNIPPETS);
-//     this.saveSnippet.saveSnippets(this.SNIPPETS);
-//     PR.prettyPrint();
-// }
-
-// SNIPPETS:SnippetInstanceObj[] = [{
-//     id:0,
-//     group:'Angular2',
-//     titleText:'Snippet 1',
-//     topNoteText:'Top Text of the snippet',
-//     codeText:`import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';
-// import { AuthService } from '../user/auth.service';
-// import { ActivatedRoute } from '@angular/router';
-// import { JQUERY_TOKEN } from '../common/index';
-
-
-// @Component({
-//     templateUrl:'./app/home/home.component.html',
-// 		styles:[\`h1 {color:red;}\`]
-// })
-
-
-// export class HomeComponent implements OnInit {
-// 		ngOnInit(): void {
-// 			this.user = this.route.snapshot.data['user'];
-// 		}
-// 	user:any;
-// 	constructor(
-// 	private route:ActivatedRoute,	
-// 	private auth:AuthService,
-// 	@Inject(JQUERY_TOKEN) private $){
-// 	}
-//   ngAfterViewInit() {
-    
-//   }
-// 	ngOnChanges(){
-// 		this.user = this.auth.getCurrentUser();
-// 	}
-
-
-// }`,
-//     bottomNoteText:'Bottom text of the snippet'
-// },
-// {
-//     id:1,
-//     group:'Angular2',
-//     titleText:'Snippet 2',
-//     topNoteText:'Top Text of the snippet',
-//     codeText:'Snippet code here',
-//     bottomNoteText:'Bottom text of the snippet'
-// },
-// {
-//     id:2,
-//     group:'Angular2',
-//     titleText:'Snippet 3',
-//     topNoteText:'Top Text of the snippet',
-//     codeText:'Snippet code here',
-//     bottomNoteText:'Bottom text of the snippet'
-// }]
 }

@@ -8,18 +8,18 @@ export class FirstPageGuard implements CanActivate {
   }
 
   canActivate() {
-      if(!this.auth.isAuthenticated()){
-        return !!this.auth.isAuthenticatedOnServer().subscribe(res=>{
-            if(res.id == undefined){
-              return true;
-            }else{
-              this.router.navigate(['/home']);
-              return false;
-            }
-        });
-      }
-      else return true;
-
+      // if(!this.auth.isAuthenticated()){
+      //   return !!this.auth.isAuthenticatedOnServer().subscribe(res=>{
+      //       if(res.id == undefined){
+      //         return true;
+      //       }else{
+      //         this.router.navigate(['/home']);
+      //         return false;
+      //       }
+      //   });
+      // }
+      // else return true;
+  return true;
     //return this.auth.isAuthenticated();
   }
 }

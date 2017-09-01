@@ -3,7 +3,8 @@ import {Directive, ElementRef, Input, Output, EventEmitter, SimpleChanges} from 
 @Directive({
   selector: '[contenteditableModelHtml]',
   host: {
-    '(keyup)': 'onKeyup()'
+    //'(keyup)': 'onKeyup()',
+    '(input)': 'onKeyup()'
   }
 })
 export class ContenteditableModelHtml {

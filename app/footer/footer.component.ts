@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { JQUERY_TOKEN } from '../common/index';
+import { AuthService } from '../user/auth.service';
 
 
 @Component({
@@ -14,9 +15,16 @@ import { JQUERY_TOKEN } from '../common/index';
 
 export class FooterComponent {
     
-    constructor(@Inject(JQUERY_TOKEN) private $){
+    constructor(@Inject(JQUERY_TOKEN) private $,
+                private auth:AuthService){
     }
     ngOnInit(){
-        
-        }
+    }
+    loginCheck(){
+       //console.log(this.auth.isAuthenticated());
+       return this.auth.isAuthenticated();
+   }
+    logout(){
+            this.auth.logout();
+    }
 }

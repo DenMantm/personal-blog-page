@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit, Renderer, Inject, } from '@angular/cor
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../user/auth.service';
 import { IUser } from '../user/user.model';
-import { JQUERY_TOKEN } from '../common/index';
+import { JQUERY_TOKEN,SaveObjectService } from '../common/index';
 import { ActivatedRoute } from '@angular/router';
 
 declare var PR;
@@ -15,69 +15,47 @@ declare var PR;
 export class BlogPostsComponent implements OnInit {
 currentUser:any;
 user:IUser;
+blogPostList:any;
 
 constructor(private auth:AuthService,
 			@Inject(JQUERY_TOKEN) private $,
-			private route:ActivatedRoute){
-            }
+			private route:ActivatedRoute,
+			private objectService:SaveObjectService
+			){}
 
 //form
-ngOnInit(){
-   this.currentUser = this.route.snapshot.data['User'];
-}
-ngAfterViewInit(){
-	   PR.prettyPrint();
-}
+    ngOnInit(){
+       this.currentUser = this.route.snapshot.data['User'];
+       this.blogPostList = this.route.snapshot.data['BlogPostList'];
+    }
+    ngAfterViewInit(){
+    	   PR.prettyPrint();
+    }
 
    loginCheck(){
        //console.log(this.auth.isAuthenticated());
        return this.auth.isAuthenticated();
    }
    
-      editClick(){
-          
-        this.$('.editable').hallo({
-          plugins: {
-            'halloindicator': {},
-            'halloformat': {},
-            'halloheadings': {},
-            'hallojustify': {},
-            'hallolists': {},
-            'hallolink': {},
-            'halloreundo': {},
-            // 'halloimage': {
-            //     search: function(query, limit, offset, successCallback) {
-            //         response = {offset: offset, total: limit + 1, assets: searchresult.slice(offset, offset+limit)};
-            //         successCallback(response);
-            //     },
-            //     suggestions: null,
-            //     uploadUrl: function() {
-            //       return '/some/example/url'
-            //     }
-            // }
-          },
-          editable: true,
-          toolbar: 'halloToolbarFixed'
-        })
-        .hallo('protectFocusFrom', this.$('#enable'));
-
-        // this.$('.editable').bind('hallomodified', function(event, data) {
-        //     this.$('#modified').html("Editables modified");
-        // });
-        // this.$('.editable').bind('halloselected', function(event, data) {
-        //     this.$('#modified').html("Selection made");
-        // });
-        // this.$('.editable').bind('hallounselected', function(event, data) {
-        //     this.$('#modified').html("Selection removed");
-        // });
-        }
-        disableClick(){
-            this.$('.editable').hallo({editable: false});
-        }
-        saveClick(){
+    editClick(){
+    }
+    disableClick(){
+    }
+    saveClick(){
 			// Save object here
-            PR.prettyPrint();
-        }
+        PR.prettyPrint();
+    }
+    testPost(){
+        
+        let tmpPost = {title:"New Blog Post",blogElements:[{
+                        "id": 0,
+                        "type": 'div',
+                        "style": null,
+                        "text": "New blog element"
+                    }]};
+        
+        this.objectService.newBlogPost(tmpPost).subscribe( res => {console.log(res)});
+    }
    
    
 
