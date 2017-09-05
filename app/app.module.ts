@@ -20,9 +20,8 @@ import {    SnippetRepository,
             SnippetInstance,
             SnippetRepResolverService,
             SnippetRepSidebar,
+            SnippetListResolverService,
         } from './snippet-rep/index';
-
-
 
 
 //service
@@ -37,7 +36,9 @@ import { JQUERY_TOKEN,
          ContenteditableModelHtml,
          NativeWindowRef,
          ScrollToElementService,
-         MediumEditorService
+         MediumEditorService,
+         VariableStorageService,
+         ToastrNotifyService
          } from './common/index';
 
 import { appRoutes } from './routes'
@@ -82,6 +83,9 @@ declare let moment:Object;
                 NativeWindowRef,
                 ScrollToElementService,
                 MediumEditorService,
+                VariableStorageService,
+                ToastrNotifyService,
+                SnippetListResolverService,
                 {provide:JQUERY_TOKEN,useValue:jQuery}
     ],
     bootstrap:[MyAppComponent]

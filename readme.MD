@@ -11,3 +11,5 @@ adding to package.json past install step to compile typescript
 ```
 style outside border..
     outline: #80b5f2 solid 5px!important;
+
+mongolab: personal-blog-page

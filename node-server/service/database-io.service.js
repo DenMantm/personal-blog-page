@@ -1,4 +1,5 @@
 var blogPost = require('../database/models/blog-post');
+var snippetGroup = require('../database/models/snippet-group')
 
 
 
@@ -16,7 +17,7 @@ exports.createNewBlogPost = function(req,res){
         
                 newBlogPost.save(function(err,blog) {
                     if (err)
-                        res.send(err);
+                        return res.send(2, { error: err });
                     else
                         res.json(blog);
                 });
@@ -24,18 +25,21 @@ exports.createNewBlogPost = function(req,res){
 }
 exports.getBlogPostList = function(req,res){
         blogPost.find({}).select({ title: 1,date : 1, author: 1 }).exec(function(err,blogList){
-            res.json(blogList);
+            if(!err)
+                res.json(blogList);
+            else {
+                return res.send(500, { error: err });
+            }
         });
 }
 exports.getBlogPost = function(req,res){
         blogPost.findOne({ '_id' :  req.query.blogId }, function(err, blog) {
             
             if(err) {
-                res.status(400);
-                res.send('Error, cannot retrieve data from DB');
+                return res.send(2, { error: err });
             }
             else if(!blog) {
-                res.status(404)
+                res.status(1)
                 res.send('Error, blog post does not exist');
             }
             else res.json(blog);
@@ -52,8 +56,13 @@ exports.editBlogPost = function(req,res){
     
 
 blogPost.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc){
-    if (err) return res.send(500, { error: err });
-    return res.send("succesfully saved");
+    if (err) 
+        return res.send(2, { error: err });
+    else if(!doc) {
+            res.status(1);
+            res.send('Error, blog post does not exist');
+            }
+    else return res.send("succesfully saved");
 });
     
 }
@@ -61,3 +70,85 @@ blogPost.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc){
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ SNIPPETS SECTION
+// /snippetGroup
+exports.createSnippetGroup = function(req,res){
+    var tmpId;
+        snippetGroup.findOne({}).sort('id').exec( function(err, doc) {
+        if(!doc){tmpId = 0}
+        else tmpId = doc.id+1;
+        
+        
+    var newSnippetGroup  = new snippetGroup();
+    newSnippetGroup.id = tmpId;
+    newSnippetGroup.group = newSnippetGroup.nextGroup();
+    newSnippetGroup.groupName = req.body.groupName;
+    newSnippetGroup.shortDescription = req.body.shortDescription;
+    newSnippetGroup.snippets = [];
+    
+    newSnippetGroup.save(function(err,blog) {
+                    if (err)
+                        res.send(err);
+                    else
+                        res.json(blog);
+                });
+        
+        
+        
+        
+        
+     });
+    
+    
+
+
+};
+exports.getSnippetGroupList = function(req,res){
+            snippetGroup.find({}).select({ id: 1, group : 1, groupName: 1 }).exec(function(err,snippetList){
+            if(!err)
+                res.json(snippetList);
+            else {
+                return res.send(500, { error: err });
+            }
+        });
+};
+exports.saveSnippetGroup = function(req,res){
+        var query = {'_id':req.body._id};
+    delete req.body._id;
+    
+    
+snippetGroup.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc){
+    if (err) 
+        return res.send(2, { error: err });
+    else if(!doc) {
+            res.status(1);
+            res.send('Error, blog post does not exist');
+            }
+    else return res.send("succesfully saved");
+});
+    
+    
+};
+
+exports.getSnippetGroup = function(req,res){
+    
+            snippetGroup.findOne({ 'id' :  req.query.snippetId }, function(err, sGroup) {
+            
+            if(err) {
+                return res.send(2, { error: err });
+            }
+            else if(!sGroup) {
+               // res.status(404)
+               // res.send('Error, blog post does not exist');
+                  res.send({});
+            }
+            else res.json(sGroup);
+           
+        });
+    
+};
+
+
+exports.deleteSnippetGroup = function(req,res){};
+exports.moveUpSnippetGroup = function(req,res){};
+exports.moveDownSnippetGroup = function(req,res){};
+

@@ -34,11 +34,7 @@ constructor(private auth:AuthService,
 //form
     ngOnInit(){
        this.currentUser = this.route.snapshot.data['User'];
-       this.route.data.subscribe((res:any)=>
-       {
-       this.blogPost =  JSON.parse(res['BlogPost']._body)
-       }
-       )
+       this.route.data.subscribe((res:any)=>{ this.blogPost =  JSON.parse(res['BlogPost']._body)})
 
        
     //     this.route.params.subscribe(params => {

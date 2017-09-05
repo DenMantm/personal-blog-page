@@ -27,7 +27,6 @@ declare var PR;
 export class SnippetRepository{
     
       sGroup: string;
-      private sub: any;
     
     currentUser:any;
     SNIPPETS:SnippetInstanceObjGroup[];
@@ -38,7 +37,7 @@ export class SnippetRepository{
     
     @ViewChild('titleText') titleText;
     constructor(@Inject(JQUERY_TOKEN) private $,
-                private saveSnippet:SaveObjectService,
+                private objectService:SaveObjectService,
                 private route:ActivatedRoute,
                 private router:Router,
                 private renderer:Renderer,
@@ -55,15 +54,12 @@ export class SnippetRepository{
       
      } 
   ngAfterViewInit(){
-
-    
     // this.renderer.invokeElementMethod(this.titleText.nativeElement, 'addEventListener', ['transitionend', (e) => {
     //     console.log(e);
     // }]);
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
   }
   
   
@@ -72,34 +68,39 @@ export class SnippetRepository{
         
         
         
-       this.SNIPPETS = this.route.snapshot.data['SNIPPETS'];
+    //   this.SNIPPETS = this.route.snapshot.data['SNIPPETS'];
        this.currentUser = this.route.snapshot.data['User'];
-       // In case if wrong parametre it will redirect to default snippet..
+       this.route.data.subscribe((res:any)=>{ 
+           this.currentSgroup =  JSON.parse(res['currentSgroup']._body);
+           this.SNIPPETS = JSON.parse(res['SNIPPETS']._body);
+           
+       })
+    //   // In case if wrong parametre it will redirect to default snippet..
             
-           this.sub = this.route.params.subscribe(params => {
-               if(params['sGroup']){
-                    this.sGroup = params['sGroup'];
+    //       this.sub = this.route.params.subscribe(params => {
+    //           if(params['sGroup']){
+    //                 this.sGroup = params['sGroup'];
                     
-                    var result = this.SNIPPETS.filter( obj => {
-                         return obj.id == +this.sGroup });
+    //                 var result = this.SNIPPETS.filter( obj => {
+    //                      return obj.id == +this.sGroup });
                     
                          
-                    if(!result[0]){
-                        this.currentSgroup = this.SNIPPETS[0];
-                    }
-                    else{
-                        this.currentSgroup = result[0];
-                    }
-                    //console.log('param_'+this.sGroup);
-               }
-               else {
-                   this.currentSgroup = this.SNIPPETS[0];
-               }
+    //                 if(!result[0]){
+    //                     this.currentSgroup = this.SNIPPETS[0];
+    //                 }
+    //                 else{
+    //                     this.currentSgroup = result[0];
+    //                 }
+    //                 //console.log('param_'+this.sGroup);
+    //           }
+    //           else {
+    //               this.currentSgroup = this.SNIPPETS[0];
+    //           }
                
        // (+) converts string 'id' to a number
 
        // In a real app: dispatch action to load the details here.
-    });
+    // });
    }
    
    select(value){
@@ -151,14 +152,13 @@ export class SnippetRepository{
             
         }
         saveClick(){
-                   this.zone.run(() => {
-            console.log('enabled time travel');
-        });
+        //           this.zone.run(() => {
+        //     console.log('enabled time travel');
+        // });
+            // console.log(this.SNIPPETS);
             
-            
-            console.log(this.SNIPPETS);
-            
-            this.saveSnippet.saveSnippets(this.SNIPPETS);
+            //this.saveSnippet.saveSnippets(this.SNIPPETS);
+             this.objectService.editSnippetGroup(this.currentSgroup).subscribe(res => console.log(res));
             PR.prettyPrint();
         }
    

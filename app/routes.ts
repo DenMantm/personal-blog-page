@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { Error404Component } from './errors/404.component';
 
 //one import combined in barel
-import { SnippetRepository,SnippetRepResolverService } from './snippet-rep/index';
+import { SnippetRepository,SnippetRepResolverService, SnippetListResolverService } from './snippet-rep/index';
 import { ProjectsPageComponent } from './projects/index';
 import { BlogPostsComponent,BlogPostListResolverService, BlogPostInstanceComponent, BlogPostInstanceResolverService } from './blog-posts/index';
 import { HomeComponent } from './home/index';
@@ -23,12 +23,14 @@ export const appRoutes:Routes = [
     },
     {path:'snippet-repository',
         component:SnippetRepository,
-        resolve:{SNIPPETS:SnippetRepResolverService,
+        resolve:{SNIPPETS:SnippetListResolverService,
+                 currentSgroup:SnippetRepResolverService,
                  User:UserLoggedInResolver
     }},
     {path:'snippet-repository/:sGroup',
         component:SnippetRepository,
-        resolve:{SNIPPETS:SnippetRepResolverService,
+        resolve:{SNIPPETS:SnippetListResolverService,
+                 currentSgroup:SnippetRepResolverService,
                  User:UserLoggedInResolver
     }},
     //{path:'home',component:HomeComponent,canActivate:[LoggedInGuard]},

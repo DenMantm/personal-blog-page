@@ -13,7 +13,7 @@
   
   <div class="row">
     <div class="col-12 col-md-3 push-md-9 bd-sidebar">
-      <snippet-rep-sidebar (selectClick)="select($event)" [SNIPPETS]="SNIPPETS" [currentlySelected]="currentSgroup.id"></snippet-rep-sidebar>
+      <snippet-rep-sidebar (selectClick)="select($event)" [SNIPPETS]="SNIPPETS" [currentlySelected]="currentSgroup"></snippet-rep-sidebar>
     </div>
     <div class="col-12 col-md-9 pull-md-3 bd-content">
       <div class="animated fadeIn" *ngFor="let snippet of currentSgroup.snippets" id="{{currentSgroup.group + '-' + snippet.id}}">

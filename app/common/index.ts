@@ -8,4 +8,6 @@ export * from './content-editable-html.directive';
 export * from './native-window.service';
 export * from './scroll-to-element.service';
 export * from './medium-editor.service';
+export * from './session-variable-storage.service';
+export * from './toastr-notify.service';
 

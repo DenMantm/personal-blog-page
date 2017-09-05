@@ -4,9 +4,10 @@
   <div class="dropdown-menu bd-search-results" id="search-results"></div>
   </form>
   <br>
+  <button *ngIf='loginCheck()' (click)='createSnippetGroup()' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Element</button>
   <div class="animated fadeIn" *ngFor="let group of SNIPPETS">
-      <a class="nav-link hand main-menu-e" [ngClass]="{'active': group.groupName == currentlySelected,'selected':group.groupName == currentlySelected }" (click)="select(group)">{{group.groupName}}</a>
-      <a class="animated fadeIn" *ngFor="let snippet of group.snippets" [hidden]="group.id !== currentlySelected" class="nav-link sub-menu-e hand" (click)="scrollTo(group.group + '-' + snippet.id)">{{snippet.titleText}}</a>
+      <a class="nav-link hand main-menu-e" [ngClass]="{'active': group.id == currentlySelected.id,'selected':group.id == currentlySelected.id }" [routerLink]="['/snippet-repository',group.id]">{{group.groupName}}</a>
+      <a class="animated fadeIn" [hidden]="group.id !== currentlySelected.id" *ngFor="let snippet of currentlySelected.snippets" class="nav-link sub-menu-e hand" (click)="scrollTo(group.group + '-' + snippet.id)">{{snippet.titleText}}</a>
   </div>
 </nav>
 

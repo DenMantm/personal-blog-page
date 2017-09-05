@@ -35,6 +35,12 @@ module.exports = function(app) {
   
   
   //Snippet section
+    app.post('/api/createSnippetGroup', dbIO.createSnippetGroup);
+    app.post('/api/saveSnippetGroup', dbIO.saveSnippetGroup);
+    app.get('/api/getSnippetGroupList', dbIO.getSnippetGroupList);
+    app.get('/api/getSnippetGroup', dbIO.getSnippetGroup);
+  
+  
 
   //snippet-repository
     app.get('/snippet-repository', function(req, res) {

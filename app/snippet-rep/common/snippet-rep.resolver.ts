@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { SaveObjectService } from '../../common/save-object-service';
  
 @Injectable()
 export class SnippetRepResolverService implements Resolve<any>{
-    constructor(private saveSnippet:SaveObjectService){}
-    resolve(){
+    constructor(private objectService:SaveObjectService,private router:Router){}
+    resolve(route:ActivatedRouteSnapshot){
         //git this fixed
-        return this.saveSnippet.loadSnippets('angular2').map((SNIPPETS:any) => JSON.parse(SNIPPETS._body));
+        
+        let sGroup = route.params['sGroup'];
+        
+        if(!sGroup) this.router.navigate(['/snippet-repository',0]);
+        
+        console.log('DEBUG: '+ sGroup);
+        
+        return this.objectService.loadSnippetGroup(sGroup).map( resp => resp );
     }
 }

@@ -9,7 +9,7 @@ export class ScrollToElementService{
     scrollTo(id){
                 this.$('html, body').animate({
                     scrollTop: this.$("#"+id).offset().top
-                }, 500);
+                }, 1000);
     }
     
 }
