@@ -1,4 +1,4 @@
-import { Component, Inject, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, Output, Input, EventEmitter } from '@angular/core';
 import { AuthService } from '../user/auth.service';
 
 declare var PR;
@@ -14,9 +14,10 @@ declare var PR;
 
 export class ContentEditNav {
     
-    editPressed:boolean
+   // editPressed:boolean
     
     //All posible scenarios here
+    @Input() editPressed:boolean;
     @Output() editClick = new EventEmitter();
     @Output() disableClick = new EventEmitter();
     @Output() saveClick = new EventEmitter();
@@ -24,11 +25,11 @@ export class ContentEditNav {
         constructor(private auth:AuthService){
         }
         edit(){
-            this.editPressed = true;
+           // this.editPressed = true;
             this.editClick.emit();
         }
         disable(){
-            this.editPressed = false;
+           // this.editPressed = false;
             this.disableClick.emit();
         }
         saveObject(){

@@ -10,4 +10,5 @@ export * from './scroll-to-element.service';
 export * from './medium-editor.service';
 export * from './session-variable-storage.service';
 export * from './toastr-notify.service';
+export * from './guards/can-deactivate-guard.service';
 

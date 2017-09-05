@@ -1,12 +1,12 @@
 <!--snippet edit navigation here-->
 
-<content-edit-nav *ngIf="loginCheck()" (editClick)="editClick()" (disableClick)="disableClick()" (saveClick)="saveClick()"></content-edit-nav>
+<content-edit-nav *ngIf="loginCheck()" [editPressed]="showElementTools" (editClick)="editClick()" (disableClick)="disableClick()" (saveClick)="saveClick()"></content-edit-nav>
 
 <div class="container main-container">
   <div class="row">
     <div class="col">
-    <h1 #titleText [ngClass]='{"animated fadeIn":menuIsSelected}' class="title text-center">Snippet Repository / {{currentSgroup.groupName}}</h1>
-    <h5 [ngClass]='{"animated fadeIn":menuIsSelected}' class="title text-center">a simple description here for each new snippet group</h5>
+    <h1 #titleText [ngClass]='{"animated fadeIn":menuIsSelected, "border": loginCheck()&&showElementTools}' class="title text-center">Snippet Repository / <span class='editable' [(contenteditableModelText)]="currentSgroup.groupName"></span></h1>
+    <h5 [ngClass]='{"animated fadeIn":menuIsSelected, "border": loginCheck()&&showElementTools}' class="title text-center editable"[(contenteditableModelText)]="currentSgroup.shortDescription" ></h5>
     <br/>
     </div>
   </div>
@@ -25,7 +25,6 @@
             </div>
         
         <div class="element">
-        
         <h3 class="editable" [(contenteditableModelText)]="snippet.titleText" ></h3>
         <!--[ngClass]="{'border': loginCheck()}"-->
         <div [ngClass]="{'border': loginCheck()&&showElementTools}" *ngFor="let element of snippet.elements">

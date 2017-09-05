@@ -38,7 +38,8 @@ import { JQUERY_TOKEN,
          ScrollToElementService,
          MediumEditorService,
          VariableStorageService,
-         ToastrNotifyService
+         ToastrNotifyService,
+         CanDeactivateGuard
          } from './common/index';
 
 import { appRoutes } from './routes'
@@ -86,6 +87,7 @@ declare let moment:Object;
                 VariableStorageService,
                 ToastrNotifyService,
                 SnippetListResolverService,
+                CanDeactivateGuard,
                 {provide:JQUERY_TOKEN,useValue:jQuery}
     ],
     bootstrap:[MyAppComponent]

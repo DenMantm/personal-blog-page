@@ -73,11 +73,10 @@ blogPost.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc){
 // /snippetGroup
 exports.createSnippetGroup = function(req,res){
     var tmpId;
-        snippetGroup.findOne({}).sort('id').exec( function(err, doc) {
+        snippetGroup.findOne({}).sort('-id').exec( function(err, doc) {
         if(!doc){tmpId = 0}
         else tmpId = doc.id+1;
-        
-        
+        console.log(doc);
     var newSnippetGroup  = new snippetGroup();
     newSnippetGroup.id = tmpId;
     newSnippetGroup.group = newSnippetGroup.nextGroup();
@@ -123,7 +122,7 @@ snippetGroup.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc)
             res.status(1);
             res.send('Error, blog post does not exist');
             }
-    else return res.send("succesfully saved");
+    else return res.send(doc);
 });
     
     

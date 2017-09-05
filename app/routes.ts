@@ -7,7 +7,7 @@ import { ProjectsPageComponent } from './projects/index';
 import { BlogPostsComponent,BlogPostListResolverService, BlogPostInstanceComponent, BlogPostInstanceResolverService } from './blog-posts/index';
 import { HomeComponent } from './home/index';
 
-import {FirstPageGuard,LoggedInGuard } from './common/index';
+import {FirstPageGuard,LoggedInGuard, CanDeactivateGuard } from './common/index';
 
 import { UserLoggedInResolver } from './user/index'
 
@@ -29,6 +29,7 @@ export const appRoutes:Routes = [
     }},
     {path:'snippet-repository/:sGroup',
         component:SnippetRepository,
+        canDeactivate: [CanDeactivateGuard],
         resolve:{SNIPPETS:SnippetListResolverService,
                  currentSgroup:SnippetRepResolverService,
                  User:UserLoggedInResolver

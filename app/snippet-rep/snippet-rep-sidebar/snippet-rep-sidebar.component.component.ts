@@ -1,4 +1,5 @@
 import { Component, Inject, Input, Output, EventEmitter  } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JQUERY_TOKEN, ScrollToElementService,SaveObjectService } from '../../common/index';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../user/index';
@@ -24,6 +25,9 @@ export class SnippetRepSidebar {
     @Input() SNIPPETS:any;
     @Input() currentlySelected:any;
     @Output() selectClick = new EventEmitter();
+    createSGroup:FormGroup;
+    snippetGroupName:FormControl;
+    snippetGroupDescription:FormControl;
     //currentlySelected:number;
     constructor(@Inject(JQUERY_TOKEN) private $,
                 private scroll:ScrollToElementService,
@@ -34,7 +38,15 @@ export class SnippetRepSidebar {
     }
     ngOnInit(){
         //console.log(this.curSel);
-        console.log(this.currentlySelected);
+        //console.log(this.currentlySelected);
+        
+        this.snippetGroupName = new FormControl('',Validators.required)
+        this.snippetGroupDescription = new FormControl('',Validators.required)
+        this.createSGroup = new FormGroup({
+            snippetGroupName:this.snippetGroupName,
+            snippetGroupDescription:this.snippetGroupDescription
+        })
+        
         }
     
     // select(selection){
@@ -53,17 +65,24 @@ export class SnippetRepSidebar {
       loginCheck(){
        return this.auth.isAuthenticated();
    }
-   createSnippetGroup(){
+   createSnippetGroup(fValues){
        //latter on create modal with the form...
-        let tmpSgroup = {groupName:'NewGroup',
-                         shortDescription:'new snippet group description'};
+        let tmpSgroup = {groupName:fValues.snippetGroupName,
+                         shortDescription:fValues.snippetGroupDescription};
         
         this.objectService.createSnippetGroup(tmpSgroup).subscribe( 
             
-            (res:any) => {console.log(JSON.parse(res._body))
+            (res:any) => {
+                let newEntity = JSON.parse(res._body);
+                this.router.navigate(['/snippet-repository',newEntity.id]);
+                
                 
             });
        
        
    }
+       //universal validator
+    validInputField(fieldRef){
+        return (!fieldRef.hasError('required') || fieldRef.pristine);
+    }
 }

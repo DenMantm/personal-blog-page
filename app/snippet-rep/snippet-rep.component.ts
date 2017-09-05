@@ -31,6 +31,7 @@ export class SnippetRepository{
     currentUser:any;
     SNIPPETS:SnippetInstanceObjGroup[];
     currentSgroup:SnippetInstanceObjGroup;
+    lastStateCurrentSgroup:SnippetInstanceObjGroup;
     menuIsSelected:boolean;
     showElementTools:boolean;
     editor:any;
@@ -61,51 +62,23 @@ export class SnippetRepository{
 
   ngOnDestroy() {
   }
-  
-  
-  
     ngOnInit() {
-        
-        
         
     //   this.SNIPPETS = this.route.snapshot.data['SNIPPETS'];
        this.currentUser = this.route.snapshot.data['User'];
        this.route.data.subscribe((res:any)=>{ 
            this.currentSgroup =  JSON.parse(res['currentSgroup']._body);
+           this.lastStateCurrentSgroup = JSON.parse(res['currentSgroup']._body);
            this.SNIPPETS = JSON.parse(res['SNIPPETS']._body);
            
        })
-    //   // In case if wrong parametre it will redirect to default snippet..
-            
-    //       this.sub = this.route.params.subscribe(params => {
-    //           if(params['sGroup']){
-    //                 this.sGroup = params['sGroup'];
-                    
-    //                 var result = this.SNIPPETS.filter( obj => {
-    //                      return obj.id == +this.sGroup });
-                    
-                         
-    //                 if(!result[0]){
-    //                     this.currentSgroup = this.SNIPPETS[0];
-    //                 }
-    //                 else{
-    //                     this.currentSgroup = result[0];
-    //                 }
-    //                 //console.log('param_'+this.sGroup);
-    //           }
-    //           else {
-    //               this.currentSgroup = this.SNIPPETS[0];
-    //           }
-               
-       // (+) converts string 'id' to a number
 
-       // In a real app: dispatch action to load the details here.
-    // });
    }
    
    select(value){
        this.menuIsSelected = true;
        this.currentSgroup = this.SNIPPETS.filter(e => e.groupName == value)[0];
+       
         this.renderer.invokeElementMethod(this.titleText.nativeElement, 'addEventListener', ['animationend', (e) => {
         this.menuIsSelected=false; }]);
        
@@ -126,10 +99,7 @@ export class SnippetRepository{
    }
    addSnippet(){
        this.arrayUtil.addNewSnippet(this.currentSgroup);
-    //   this.zone.run(() => {
-    //         console.log('enabled time travel');
-    //     });
-        //workaround - in order to enable editing on the newly created element
+
         setTimeout(()=>{ this.editor = this.medium.createInstance() }, 500);
    }
    addElementDiv(list){
@@ -152,15 +122,36 @@ export class SnippetRepository{
             
         }
         saveClick(){
-        //           this.zone.run(() => {
-        //     console.log('enabled time travel');
-        // });
-            // console.log(this.SNIPPETS);
-            
-            //this.saveSnippet.saveSnippets(this.SNIPPETS);
-             this.objectService.editSnippetGroup(this.currentSgroup).subscribe(res => console.log(res));
+             this.objectService.editSnippetGroup(this.currentSgroup).subscribe((res:any) => {
+                 //this.lastStateCurrentSgroup = JSON.parse(res._body)
+                this.lastStateCurrentSgroup =  this.deepCopy(this.currentSgroup);
+             }   );
             PR.prettyPrint();
         }
+        
+        canDeactivate() {
+    if (JSON.stringify(this.currentSgroup) !== JSON.stringify(this.lastStateCurrentSgroup) ) {
+        
+        let userResponse = window.confirm('Discard changes?');
+            if(userResponse) this.showElementTools = false;
+        
+      return userResponse
+      
+      
+    }
+    this.showElementTools = false;
+    return true;
+}
+    deepCopy(oldObj) {
+    var newObj = oldObj;
+    if (oldObj && typeof oldObj === 'object') {
+        newObj = Object.prototype.toString.call(oldObj) === "[object Array]" ? [] : {};
+        for (var i in oldObj) {
+            newObj[i] = this.deepCopy(oldObj[i]);
+        }
+    }
+    return newObj;
+}
    
    
 }
