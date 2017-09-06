@@ -129,5 +129,17 @@ export class ArrayUtilityService{
             };
         
     }
+    //Not a very good place for this her, but there is really no point to create new service just for this one,
+    //if in future more helpper functions will be created will mve to the new helpper func service
+        deepCopy(oldObj) {
+    var newObj = oldObj;
+    if (oldObj && typeof oldObj === 'object') {
+        newObj = Object.prototype.toString.call(oldObj) === "[object Array]" ? [] : {};
+        for (var i in oldObj) {
+            newObj[i] = this.deepCopy(oldObj[i]);
+        }
+    }
+    return newObj;
+}
 
 }

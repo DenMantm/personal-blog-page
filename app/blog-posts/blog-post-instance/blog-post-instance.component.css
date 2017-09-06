@@ -13,3 +13,4 @@
 .controls button {float:right;margin-bottom:10px;}
 .controls {height: 0px; position: absolute; z-index: 100; width: 94%;}
 .title{    text-align: center;}
+.draft{color:red;}

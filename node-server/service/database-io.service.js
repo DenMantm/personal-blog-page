@@ -10,10 +10,12 @@ exports.createNewBlogPost = function(req,res){
     
         //mapping the values=
         newBlogPost.title        = req.body.title;
+        newBlogPost.description  = req.body.description;
         newBlogPost.date         = Date();
         newBlogPost.author       = req.user.username;
         newBlogPost.blogElements = req.body.blogElements;
         newBlogPost.isPosted     = false;
+        newBlogPost.isDeleted    = false;
         
                 newBlogPost.save(function(err,blog) {
                     if (err)
@@ -24,13 +26,19 @@ exports.createNewBlogPost = function(req,res){
         
 }
 exports.getBlogPostList = function(req,res){
-        blogPost.find({}).select({ title: 1,date : 1, author: 1 }).exec(function(err,blogList){
+    
+        //logic that specifies if user is logged in or not and then returning drafts or not..
+    
+        blogPost.find({isDeleted:false}).select({ title: 1,date : 1, author: 1 }).sort('-date').exec(function(err,blogList){
             if(!err)
                 res.json(blogList);
             else {
                 return res.send(500, { error: err });
             }
         });
+        
+        
+        
 }
 exports.getBlogPost = function(req,res){
         blogPost.findOne({ '_id' :  req.query.blogId }, function(err, blog) {
@@ -77,12 +85,13 @@ exports.createSnippetGroup = function(req,res){
         if(!doc){tmpId = 0}
         else tmpId = doc.id+1;
         console.log(doc);
-    var newSnippetGroup  = new snippetGroup();
-    newSnippetGroup.id = tmpId;
-    newSnippetGroup.group = newSnippetGroup.nextGroup();
-    newSnippetGroup.groupName = req.body.groupName;
-    newSnippetGroup.shortDescription = req.body.shortDescription;
-    newSnippetGroup.snippets = [];
+    var newSnippetGroup                 = new snippetGroup();
+    newSnippetGroup.id                  = tmpId;
+    newSnippetGroup.group               = newSnippetGroup.nextGroup();
+    newSnippetGroup.groupName           = req.body.groupName;
+    newSnippetGroup.shortDescription    = req.body.shortDescription;
+    newSnippetGroup.snippets            = [];
+    newSnippetGroup.isDeleted           = false;
     
     newSnippetGroup.save(function(err,blog) {
                     if (err)
@@ -96,13 +105,10 @@ exports.createSnippetGroup = function(req,res){
         
         
      });
-    
-    
-
 
 };
 exports.getSnippetGroupList = function(req,res){
-            snippetGroup.find({}).select({ id: 1, group : 1, groupName: 1 }).exec(function(err,snippetList){
+            snippetGroup.find({isDeleted:false}).select({ id: 1, group : 1, groupName: 1 }).sort('-id').exec(function(err,snippetList){
             if(!err)
                 res.json(snippetList);
             else {

@@ -124,7 +124,7 @@ export class SnippetRepository{
         saveClick(){
              this.objectService.editSnippetGroup(this.currentSgroup).subscribe((res:any) => {
                  //this.lastStateCurrentSgroup = JSON.parse(res._body)
-                this.lastStateCurrentSgroup =  this.deepCopy(this.currentSgroup);
+                this.lastStateCurrentSgroup =  this.arrayUtil.deepCopy(this.currentSgroup);
              }   );
             PR.prettyPrint();
         }
@@ -142,16 +142,5 @@ export class SnippetRepository{
     this.showElementTools = false;
     return true;
 }
-    deepCopy(oldObj) {
-    var newObj = oldObj;
-    if (oldObj && typeof oldObj === 'object') {
-        newObj = Object.prototype.toString.call(oldObj) === "[object Array]" ? [] : {};
-        for (var i in oldObj) {
-            newObj[i] = this.deepCopy(oldObj[i]);
-        }
-    }
-    return newObj;
-}
-   
-   
+
 }

@@ -1,11 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 /****** LOGIN MODAL ******/
-.hand { cursor: pointer; 
-        cursor: hand; }
-.error{
-  color:rgb(165, 8, 8);
-}
 .inputError{
   border-color: rgb(165, 8, 8)!important;
 }

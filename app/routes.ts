@@ -18,6 +18,7 @@ export const appRoutes:Routes = [
     {path:'blog-posts',component:BlogPostsComponent,resolve:{User:UserLoggedInResolver,BlogPostList:BlogPostListResolverService}},
     {path:'blog-posts/:blogId',
      component:BlogPostInstanceComponent,
+     canDeactivate: [CanDeactivateGuard],
      resolve:{BlogPost:BlogPostInstanceResolverService,User:UserLoggedInResolver},
      data: { blogId: ':blogId' }
     },

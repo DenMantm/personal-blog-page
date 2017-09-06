@@ -17,11 +17,12 @@ declare var PR;
 
 
 export class BlogPostInstanceComponent implements OnInit {
-currentUser:any;
-user:IUser;
-blogPost:any;
-showElementTools:boolean
-editor:any
+    currentUser:any;
+    user:IUser;
+    blogPost:any;
+    lastStateBlogPost:any;
+    showElementTools:boolean
+    editor:any
 
 constructor(private auth:AuthService,
 			@Inject(JQUERY_TOKEN) private $,
@@ -34,7 +35,10 @@ constructor(private auth:AuthService,
 //form
     ngOnInit(){
        this.currentUser = this.route.snapshot.data['User'];
-       this.route.data.subscribe((res:any)=>{ this.blogPost =  JSON.parse(res['BlogPost']._body)})
+       this.route.data.subscribe((res:any)=>{ 
+           this.blogPost =  JSON.parse(res['BlogPost']._body);
+           this.lastStateBlogPost = JSON.parse(res['BlogPost']._body);
+       })
 
        
     //     this.route.params.subscribe(params => {
@@ -98,12 +102,32 @@ constructor(private auth:AuthService,
         }
         saveClick(){
             console.log(this.blogPost);
-            this.objectService.editBlogPost(this.blogPost).subscribe(res => console.log(res) );
+            this.objectService.editBlogPost(this.blogPost).subscribe(res => {
+            
+            //console.log(res)
+            this.lastStateBlogPost =  this.arrayUtil.deepCopy(this.blogPost);
+                
+            }
+            );
             //Save to be created here
             
             
             PR.prettyPrint();
         }
+        
+            canDeactivate() {
+                if (JSON.stringify(this.blogPost) !== JSON.stringify(this.lastStateBlogPost) ) {
+                    
+                    let userResponse = window.confirm('Discard changes?');
+                        if(userResponse) this.showElementTools = false;
+                    
+                  return userResponse
+                  
+                  
+                }
+                this.showElementTools = false;
+                return true;
+}
 
 }
 

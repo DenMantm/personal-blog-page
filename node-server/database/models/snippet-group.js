@@ -14,6 +14,7 @@ var snippetElement = mongoose.Schema({
 var snippet = mongoose.Schema({
         id          : Number,
         titleText   : String,
+        isDeleted   :Boolean,
         elements    : [snippetElement],
         comments    : []
 });

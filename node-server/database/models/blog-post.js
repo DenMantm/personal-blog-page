@@ -14,10 +14,12 @@ var blogElement = mongoose.Schema({
 
 var blogPost = mongoose.Schema({
         title        : String,
+        description  : String,
         date         : String,
         author       : String,
         blogElements : [blogElement],
-        isPosted     : Boolean
+        isPosted     : Boolean,
+        isDeleted    : Boolean
 });
 
 

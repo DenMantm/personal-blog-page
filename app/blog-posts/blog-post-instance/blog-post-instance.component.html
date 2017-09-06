@@ -1,21 +1,19 @@
  <!-- Main component for a primary marketing message or call to action -->
-<content-edit-nav *ngIf="loginCheck()" (editClick)="editClick()" (disableClick)="disableClick()" (saveClick)="saveClick()"></content-edit-nav>
+<content-edit-nav *ngIf="loginCheck()" [editPressed]="showElementTools" (editClick)="editClick()" (disableClick)="disableClick()" (saveClick)="saveClick()"></content-edit-nav>
 
 <div class="container main-container">
-  <!--<div class="row">-->
-  <!--  <div class="col-10">-->
-  <!--    (wider) cxz cxz cxz cxz cxz cxz cxzzcx cxz cxz cxz cxz cxz cxz cxz cxz cxz cxz cxz cxz dsa dsadsa  dsa dsa dsa dsa dsa dsa dsa dsa dsa-->
-  <!--  </div>-->
-  <!--  <div class="col">-->
-  <!--    1 of 3 cxz cxz cx cxz cxz cxz cxzcxz cxz cxzzcx cxz cxz cxz cxz cxz-->
-  <!--  </div>-->
-  <!--</div>-->
+
   <div class="row">
     <div class="col">
-      <h1 [ngClass]="{'border': loginCheck()&&showElementTools}" *ngIf="blogPost" class="title editable animated fadeIn" [(contenteditableModelHtml)]="blogPost.title"></h1>
+      <h1 [ngClass]="{'border': loginCheck()&&showElementTools}" *ngIf="blogPost" class="title animated fadeIn">
+        <span [(contenteditableModelHtml)]="blogPost.title" class="editable"></span> 
+        <span class='draft'> : draft</span>
+      </h1>
+      <h3 [ngClass]="{'border': loginCheck()&&showElementTools}" *ngIf="blogPost" class="title animated editable fadeIn"  [(contenteditableModelHtml)]="blogPost.description"  ></h3>
       <div *ngIf="blogPost"  class = "blog-meta animated fadeIn">
-        "Author: {{blogPost?.author}} " , " Date: {{blogPost?.date | date: 'dd/MM/yyyy HH:MM'}}} "
+        "Author: {{blogPost?.author}} " , " <i class="fa fa-calendar"></i> Posted on : {{blogPost?.date | date: 'dd/MM/yyyy at HH:MM'}} "
       </div>
+      
      <!--<button (click)="testPost()" type="button" class="btn btn-warning">AddPost</button>-->
     </div>
   </div>
@@ -49,6 +47,8 @@
   </div>
   
 </div>
+
+
 
 
 
