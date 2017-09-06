@@ -10,6 +10,7 @@ import { JQUERY_TOKEN,
 import { ActivatedRoute } from '@angular/router';
 
 declare var PR;
+declare var swal;
 @Component({
     templateUrl:'app/blog-posts/blog-post-instance/blog-post-instance.component.html',
     styleUrls:['app/blog-posts/blog-post-instance/blog-post-instance.component.css']
@@ -115,18 +116,53 @@ constructor(private auth:AuthService,
             PR.prettyPrint();
         }
         
-            canDeactivate() {
+            canDeactivate():any {
                 if (JSON.stringify(this.blogPost) !== JSON.stringify(this.lastStateBlogPost) ) {
                     
-                    let userResponse = window.confirm('Discard changes?');
-                        if(userResponse) this.showElementTools = false;
+                //     let userResponse = window.confirm('Discard changes?');
+                //         if(userResponse) this.showElementTools = false;
                     
-                  return userResponse
-                  
-                  
+                //   return userResponse
+                    let obs;
+        
+        let promise = new Promise<any>( subsc => obs = subsc );
+        
+        // let userResponse = false;
+        
+        swal({
+          title: "Are you sure?",
+          text: "Discard changes?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes",
+          cancelButtonText: "Cancel",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        },
+        function(isConfirm){
+          if (isConfirm) {
+            obs(true);
+
+          } else {
+            obs(false);
+          }
+        });
+        //console.log(userResponse);
+        
+        
+        return promise.then(res => 
+        { console.log('DEBUG: '+ res )
+        return res
+            
+        }
+        )
                 }
-                this.showElementTools = false;
-                return true;
+                else{
+                 this.showElementTools = false;
+                 return true;
+                }
+
 }
 
 }

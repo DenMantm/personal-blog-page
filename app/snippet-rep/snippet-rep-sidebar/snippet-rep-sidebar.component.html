@@ -4,8 +4,14 @@
   <div class="dropdown-menu bd-search-results" id="search-results"></div>
   </form>
   <br>
-  <button *ngIf='loginCheck()' type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#createSnipperGroup"><i class="fa fa-plus" aria-hidden="true"></i> Add Element</button>
-  <div *ngFor="let group of SNIPPETS">
+  <button [hidden]="!showElementTools" *ngIf="loginCheck()"  type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#createSnipperGroup"><i class="fa fa-plus" aria-hidden="true"></i> Add Element</button>
+  <div *ngFor="let group of SNIPPETS" [ngClass]="{'border': loginCheck()&&showElementTools}" >
+            <div [hidden]="!showElementTools" *ngIf="loginCheck()" class="controls">
+              <button (click)='remove(element,snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
+              <button (click)='moveUp(element,snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+              <button (click)='moveDown(element,snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+            </div>
+    
       <a class="nav-link hand main-menu-e" [ngClass]="{'active': group.id == currentlySelected.id,'selected':group.id == currentlySelected.id }" [routerLink]="['/snippet-repository',group.id]">{{group.groupName}}</a>
       <a class="animated fadeIn" [hidden]="group.id !== currentlySelected.id" *ngFor="let snippet of currentlySelected.snippets" class="nav-link sub-menu-e hand" (click)="scrollTo(group.group + '-' + snippet.id)">{{snippet.titleText}}</a>
   </div>

@@ -18,16 +18,25 @@ import { AuthService } from '../../user/index';
     .selected {color:red !important}
     .main-block{padding-right:5%;
     padding-left:5%}
+    .switcher-background{background-color: #f6f8fa;}
+            .border{border:1px solid gray;margin-bottom:5px}
+            .controls button {float:right;margin-bottom:10px}
+            .controls {height: 0px;
+    position: absolute;
+    z-index: 100;
+    width: 94%;}
     
     `]
 })
 export class SnippetRepSidebar {
     @Input() SNIPPETS:any;
     @Input() currentlySelected:any;
+    @Input() showElementTools:boolean;
     @Output() selectClick = new EventEmitter();
     createSGroup:FormGroup;
     snippetGroupName:FormControl;
     snippetGroupDescription:FormControl;
+    
     //currentlySelected:number;
     constructor(@Inject(JQUERY_TOKEN) private $,
                 private scroll:ScrollToElementService,
@@ -74,6 +83,7 @@ export class SnippetRepSidebar {
             
             (res:any) => {
                 let newEntity = JSON.parse(res._body);
+                console.log(newEntity);
                 this.router.navigate(['/snippet-repository',newEntity.id]);
                 
                 

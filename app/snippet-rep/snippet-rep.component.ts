@@ -1,4 +1,5 @@
 import {Component, Inject, ViewChild, Renderer, NgZone}  from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
 import {JQUERY_TOKEN,
         SaveObjectService,
@@ -10,7 +11,7 @@ import {JQUERY_TOKEN,
 import { SnippetInstanceObj,SnippetInstanceObjGroup } from './common/snippet-rep.snippet-object';
 import { AuthService } from '../user/index';
 declare var PR;
-
+declare var swal;
 
 
 @Component({
@@ -129,18 +130,53 @@ export class SnippetRepository{
             PR.prettyPrint();
         }
         
-        canDeactivate() {
+        canDeactivate():any {
     if (JSON.stringify(this.currentSgroup) !== JSON.stringify(this.lastStateCurrentSgroup) ) {
         
-        let userResponse = window.confirm('Discard changes?');
-            if(userResponse) this.showElementTools = false;
+        let obs;
         
-      return userResponse
+        let promise = new Promise<any>( subsc => obs = subsc );
+        
+        // let userResponse = false;
+        
+        swal({
+          title: "Are you sure?",
+          text: "Discard changes?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes",
+          cancelButtonText: "Cancel",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        },
+        function(isConfirm){
+          if (isConfirm) {
+            //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            obs(true);
+            //userResponse = true;
+          } else {
+            //swal("Cancelled", "Your imaginary file is safe :)", "error");
+            //userResponse = false;
+            obs(false);
+          }
+        });
+        //console.log(userResponse);
+        
+        
+        return promise.then(res => res)
+        
+           // if(userResponse) this.showElementTools = false;
+        
+     // return userResponse
       
       
     }
-    this.showElementTools = false;
-    return true;
+    else{
+        this.showElementTools = false;
+        return true;
+    }
+
 }
 
 }

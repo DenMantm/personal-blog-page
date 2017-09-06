@@ -26,7 +26,8 @@ var snippetGroup = mongoose.Schema({
         group     : String,
         groupName : String,
         shortDescription: String,
-        snippets : [snippet]
+        snippets : [snippet],
+        isDeleted: Boolean
 });
 
 
