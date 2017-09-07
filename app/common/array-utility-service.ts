@@ -13,7 +13,8 @@ export class ArrayUtilityService{
 //   }
   addNewSnippet(itemList){
             //adding item to the array and passing item length
-            itemList.snippets.push(this.snippetFactory(itemList.length));
+            console.log(itemList)
+            itemList.push(this.snippetFactory(itemList.length));
             
   }
   addNewElementDiv(item){

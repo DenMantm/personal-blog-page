@@ -12,5 +12,12 @@
 .border{border:1px solid gray;margin-bottom:5px;}
 .controls button {float:right;margin-bottom:10px;}
 .controls {height: 0px; position: absolute; z-index: 100; width: 94%;}
-.title{    text-align: center;}
+.title{
+    text-align: center;
+    font-family: 'Aller', serif;
+}
+.sub-title{
+    text-align: center;
+    font-family: 'Aller', serif;
+}
 .draft{color:red;}

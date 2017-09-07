@@ -12,7 +12,7 @@ export class SnippetRepResolverService implements Resolve<any>{
         
         if(!sGroup) this.router.navigate(['/snippet-repository',0]);
         
-        console.log('DEBUG: '+ sGroup);
+       // console.log('DEBUG: '+ sGroup);
         
         return this.objectService.loadSnippetGroup(sGroup).map( resp => resp );
     }

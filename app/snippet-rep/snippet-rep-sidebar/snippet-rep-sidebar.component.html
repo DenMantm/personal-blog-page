@@ -6,15 +6,29 @@
   <br>
   <button [hidden]="!showElementTools" *ngIf="loginCheck()"  type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#createSnipperGroup"><i class="fa fa-plus" aria-hidden="true"></i> Add Element</button>
   <div *ngFor="let group of SNIPPETS" [ngClass]="{'border': loginCheck()&&showElementTools}" >
+    <ul class="list-group">
+      <a class="nav-link hand main-menu-e" [routerLink]="['/snippet-repository',group.id]">
+      <li class="list-group-item justify-content-between list-group-item-action" [ngClass]="{'active': group.id == currentlySelected.id}">
             <div [hidden]="!showElementTools" *ngIf="loginCheck()" class="controls">
               <button (click)='remove(element,snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-times" aria-hidden="true"></i></button>
               <button (click)='moveUp(element,snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
               <button (click)='moveDown(element,snippet.elements)' type="button" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
             </div>
-    
-      <a class="nav-link hand main-menu-e" [ngClass]="{'active': group.id == currentlySelected.id,'selected':group.id == currentlySelected.id }" [routerLink]="['/snippet-repository',group.id]">{{group.groupName}}</a>
-      <a class="animated fadeIn" [hidden]="group.id !== currentlySelected.id" *ngFor="let snippet of currentlySelected.snippets" class="nav-link sub-menu-e hand" (click)="scrollTo(group.group + '-' + snippet.id)">{{snippet.titleText}}</a>
+      {{group.groupName}}
+      <span class="badge badge-default badge-pill">{{group.snippetCounter}}</span>
+      </li>
+      </a>
+    </ul>
+      <ul class="list-group">
+        <li class="list-group-item justify-content-between sub-menu-e list-group-item-action" *ngFor="let snippet of currentlySelected.snippets" [hidden]="group.id !== currentlySelected.id">
+           <a class="animated fadeIn" class="nav-link hand" (click)="scrollTo(group.group + '-' + snippet.id)">{{snippet.titleText}}</a>
+        </li>
+      </ul>
+     
   </div>
+  
+  
+  
 </nav>
 
 <!--NEW SNIPPET CREATION MODAL HERE-->

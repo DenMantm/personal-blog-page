@@ -29,16 +29,14 @@ exports.getBlogPostList = function(req,res){
     
         //logic that specifies if user is logged in or not and then returning drafts or not..
     
-        blogPost.find({isDeleted:false}).select({ title: 1,date : 1, author: 1 }).sort('-date').exec(function(err,blogList){
+        blogPost.find({isDeleted:false}).select({ title: 1,date : 1, author: 1,description:1 }).sort('-date').exec(function(err,blogList){
             if(!err)
                 res.json(blogList);
             else {
                 return res.send(500, { error: err });
             }
         });
-        
-        
-        
+
 }
 exports.getBlogPost = function(req,res){
         blogPost.findOne({ '_id' :  req.query.blogId }, function(err, blog) {
@@ -108,7 +106,7 @@ exports.createSnippetGroup = function(req,res){
 
 };
 exports.getSnippetGroupList = function(req,res){
-            snippetGroup.find({isDeleted:false}).select({ id: 1, group : 1, groupName: 1 }).sort('-id').exec(function(err,snippetList){
+            snippetGroup.find({isDeleted:false}).select({ id: 1, group : 1, groupName: 1, snippetCounter: 1 }).sort('id').exec(function(err,snippetList){
             if(!err)
                 res.json(snippetList);
             else {
@@ -119,6 +117,11 @@ exports.getSnippetGroupList = function(req,res){
 exports.saveSnippetGroup = function(req,res){
         var query = {'_id':req.body._id};
     delete req.body._id;
+    
+    //adding snippet counter here for convenience
+    if(req.body.snippets){
+        req.body.snippetCounter = req.body.snippets.length;
+    }
     
     
 snippetGroup.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc){

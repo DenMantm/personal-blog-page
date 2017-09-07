@@ -25,6 +25,7 @@ import { AuthService } from '../../user/index';
     position: absolute;
     z-index: 100;
     width: 94%;}
+    nav {margin-bottom:20px}
     
     `]
 })

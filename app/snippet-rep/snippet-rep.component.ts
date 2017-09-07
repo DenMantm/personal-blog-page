@@ -99,7 +99,7 @@ export class SnippetRepository{
        this.arrayUtil.moveItemUp(item,itemList); 
    }
    addSnippet(){
-       this.arrayUtil.addNewSnippet(this.currentSgroup);
+       this.arrayUtil.addNewSnippet(this.currentSgroup.snippets);
 
         setTimeout(()=>{ this.editor = this.medium.createInstance() }, 500);
    }

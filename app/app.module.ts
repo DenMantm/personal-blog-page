@@ -12,7 +12,12 @@ import { NavbarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
 import { HomeComponent } from './home/index';
 import { ProjectsPageComponent } from './projects/index';
-import { BlogPostsComponent, BlogPostListResolverService, BlogPostInstanceComponent, BlogPostInstanceResolverService } from './blog-posts/index';
+import {BlogPostsComponent, 
+        BlogPostListResolverService, 
+        BlogPostInstanceComponent, 
+        BlogPostInstanceResolverService,
+        BlogPostHeadderDescriptorComponent
+        } from './blog-posts/index';
 import { FooterComponent } from './footer/footer.component';
 import { LoginSignupComponent } from './footer/loginSignup/login-signup.component';
 import { ContentEditNav } from './content-edit-nav/content-edit-nav.component';
@@ -70,7 +75,8 @@ declare let moment:Object;
                     LoginSignupComponent,
                     ContentEditNav,
                     BlogPostsComponent,
-                    BlogPostInstanceComponent
+                    BlogPostInstanceComponent,
+                    BlogPostHeadderDescriptorComponent
                     ],
     providers: [AuthService,
                 FirstPageGuard,

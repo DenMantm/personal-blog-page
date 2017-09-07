@@ -3,16 +3,8 @@
 
 <div class="container main-container">
   <div class="row">
-    <div class="col">
-      <h4><i class="fa fa-search"></i>Avalible Blog Posts</h4>
-      <ul class="list-unstyled">
-      <li *ngFor="let post of blogPostList"><a [routerLink]="['/blog-posts',post._id]" >{{post.title}}</a></li>
-      </ul>
-     <!--<button (click)="testPost()" type="button" class="btn btn-warning">Add Post new Post</button>-->
-       <button *ngIf='loginCheck()' type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#createBlogPost"><i class="fa fa-plus" aria-hidden="true"></i>Create New Post</button>
-    </div>
-                <div class="col-4">
-                <div class="well">
+    <div class="col-12 col-md-3 push-md-9 bd-sidebar">
+                        <div class="well">
                     <h4><i class="fa fa-search"></i> Blog Search...</h4>
                     <div class="input-group">
                         <input type="text" class="form-control">
@@ -77,11 +69,19 @@
                 <!-- /well -->
 				
 				<!-- /well -->
-</div>
-    
-    
-    
-    
+     
+     
+     
+     
+    </div>
+    <div class="col-12 col-md-9 pull-md-3 bd-content">
+              <h4><i class="fa fa-search"></i>Avalible Blog Posts</h4>
+        <div class="list-group">
+            <blog-post-headder *ngFor="let post of blogPostList" [blogPost]='post'></blog-post-headder>
+        </div>
+        <br>
+       <button *ngIf='loginCheck()' type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#createBlogPost"><i class="fa fa-plus" aria-hidden="true"></i>Create New Post</button>
+    </div>
     
   </div>
 </div>
