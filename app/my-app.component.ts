@@ -7,7 +7,7 @@ import { Component, HostListener, ElementRef, HostBinding,enableProdMode } from 
     selector:'body',
     template:`<navbar-component></navbar-component>
               <router-outlet></router-outlet>
-              <footer-component>`
+              <footer-component></footer-component>`
 })
 
 export class MyAppComponent {

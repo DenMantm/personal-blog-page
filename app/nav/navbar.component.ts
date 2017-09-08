@@ -7,6 +7,7 @@ import { JQUERY_TOKEN } from '../common/index';
     templateUrl: 'app/nav/navbar.component.html',
     styles: [`.banner{
             display: inline-block;
+            color:black;
             border: 7px solid #181818;
             padding: 1rem 2rem;
             font-size: 2.4rem;
@@ -30,7 +31,12 @@ import { JQUERY_TOKEN } from '../common/index';
     .prep{
         display: block;
         font-size: 1.4rem;
-    }`]
+    }
+    .nav-enhance{
+            background-color: #f5f5f5;
+            background-image: linear-gradient(to bottom, #FFFFFF, #e2e2e2);
+    }
+    `]
     //     styles: [`.nav.navbar-nav {font-size:15px;}
     // #searchForm {margin-right: 100px;}
     // @media (max-width:1200px){#searchForm {display:none} }

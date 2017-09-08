@@ -1,0 +1,8 @@
+ <a [routerLink]="['/blog-posts',blogPost._id]" class="list-group-item list-group-item-action flex-column align-items-start main-a">
+    <div class="d-flex w-100 justify-content-between element padding">
+      <h5 class="mb-1">{{blogPost.title}}</h5>
+      <small>By {{blogPost.author}}</small>
+    </div>
+    <p class="mb-1 padding">{{blogPost.description}}</p>
+    <small class = 'padding'>Post was created at {{blogPost.date | date: 'dd/MM/yyyy HH:MM'}}</small>
+  </a>

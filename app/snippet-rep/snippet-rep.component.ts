@@ -17,7 +17,6 @@ declare var swal;
 @Component({
     templateUrl:'app/snippet-rep/snippet-rep.component.html',
     styles:[`.switcher-background{background-color: #f6f8fa;}
-            .border{border:1px solid gray;margin-bottom:5px}
             .controls button {float:right;margin-bottom:10px}
             .controls {height: 0px;
     position: absolute;

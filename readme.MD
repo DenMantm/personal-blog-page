@@ -13,3 +13,8 @@ style outside border..
     outline: #80b5f2 solid 5px!important;
 
 mongolab: personal-blog-page
+
+
+Colors:
+top line, nice blue:
+#298cad
